@@ -1,0 +1,4630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Turtle Room · Logo</title>
+<meta name="description" content="Your own Logo computer lab. Write routines, draw with a turtle, and explore a spinning cube programmed entirely in Logo.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101520'/%3E%3Cpath d='M16 5 27 26 16 21 5 26Z' fill='none' stroke='%235ee8c5' stroke-width='3'/%3E%3C/svg%3E">
+<style>:root{color-scheme:dark;--bg:#11151d;--panel:#191f29;--line:#343e4d;--muted:#a0afc1;--ink:#edf2f5;--green:#62ebc8;--amber:#ffd17a;--mono:Consolas,'Cascadia Code','Courier New',monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,'Segoe UI',sans-serif}button,input,select,textarea{font:inherit}button,select{border:1px solid var(--line);color:var(--ink);background:#242d3b;border-radius:6px;padding:7px 12px;cursor:pointer;font-size:14px}button:hover,select:hover{border-color:var(--muted);background:#303c4e}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:3px}button.primary{background:var(--green);color:#0d2823;font-weight:700;border-color:var(--green)}button.primary:hover{background:#8bf6da}.masthead{padding:20px 4%;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:#181e27}.brand{display:flex;gap:14px;align-items:center}.brand-icon{font:44px/1 var(--mono);color:var(--green)}h1{font-size:23px;letter-spacing:-.8px;margin:0;font-weight:700}.eyebrow{font:12px/1.7 var(--mono);letter-spacing:1.4px;color:var(--muted)}.header-end{display:flex;align-items:center;gap:10px}.bbc-stripes{display:flex;gap:4px;margin-right:20px;transform:skew(-18deg)}.bbc-stripes i{display:block;width:8px;height:27px;background:#e15962}.bbc-stripes i:nth-child(2){background:#f6b95b}.bbc-stripes i:nth-child(3){background:#66d4bb}.bbc-stripes i:nth-child(4){background:#72a2f1}main{max-width:1700px;margin:auto;padding:25px 4% 0}.workspace-heading{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px;gap:16px}.accent{color:var(--amber)}h2{font-size:25px;letter-spacing:-.6px;line-height:1.3;margin:5px 0 0}.local-note,.muted{font-size:12px;color:var(--muted)}.workbench{display:grid;grid-template-columns:minmax(320px,44%) minmax(360px,1fr);border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}.editor-panel{border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.panel-heading{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--line);gap:10px;min-height:49px}.panel-label{font:12px var(--mono);letter-spacing:1.2px;color:#bcc8d6}#runStatus{color:var(--green);font:12px var(--mono)}#runStatus[data-state="error"]{color:#ff9d98}#runStatus[data-state="paused"]{color:var(--amber)}.filebar{display:flex;gap:8px;padding:12px 15px;border-bottom:1px solid var(--line)}.filebar select{flex:1;min-width:0;background:#202835}.editor-wrap{position:relative;display:flex;flex:1;min-height:390px;background:#131923;overflow:hidden}#lineNumbers{margin:0;padding:18px 11px;min-width:48px;text-align:right;font:14px/1.7 var(--mono);color:#647489;border-right:1px solid #242c39;user-select:none;overflow:hidden}#editor{border:0;resize:none;outline-offset:-3px;background:transparent;color:#ddebe9;white-space:pre;tab-size:2;font:14px/1.7 var(--mono);padding:18px 14px;flex:1;min-width:0;min-height:390px;height:100%;position:absolute;left:48px;right:0;width:calc(100% - 48px)}.editor-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 15px;border-top:1px solid var(--line)}.editor-actions>div{display:flex;gap:6px}.editor-actions button{font-size:12px;padding:6px 9px}.runbar{display:flex;align-items:center;gap:8px;padding:14px 15px;background:#202834;border-top:1px solid var(--line)}kbd{font:12px var(--mono);color:var(--muted);margin-left:auto;white-space:nowrap}.result-panel{min-width:0}.screen-container{background:#050b13;padding:10px 14px 0}.screen{position:relative;width:100%;max-width:800px;aspect-ratio:4/3;margin:auto;overflow:hidden}canvas{position:absolute;inset:0;width:100%;height:100%}#turtle{pointer-events:none}.screen-tools{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;background:#050b13;border-bottom:1px solid var(--line);gap:8px}.screen-tools button{font-size:12px;padding:5px 9px;background:transparent}.screen-tools>div{display:flex;gap:6px}.console-heading{display:flex;justify-content:space-between;align-items:center;padding:9px 16px 0}.console-heading button{border:0;background:transparent;font-size:12px;color:var(--muted);padding:2px}#console{height:83px;overflow:auto;margin:0;padding:9px 16px;color:#b6d7d0;font:13px/1.5 var(--mono);white-space:pre-wrap;overflow-wrap:anywhere}#commandForm{display:flex;align-items:center;border-top:1px solid var(--line);padding:9px 12px;gap:10px}#commandForm>span{color:var(--green);font:20px var(--mono)}#command{background:transparent;color:var(--ink);border:0;min-width:0;width:100%;font:14px var(--mono);padding:6px}#command::placeholder{color:#9aabbd}footer{display:flex;justify-content:space-between;gap:16px;padding:18px 0 24px;color:var(--muted);font-size:12px}footer b{font:12px var(--mono);color:var(--green);margin-right:4px}footer b:not(:first-child){margin-left:16px}dialog{background:#19212d;color:var(--ink);border:1px solid #596779;border-radius:12px;max-width:min(790px,92vw);padding:26px;max-height:88vh}dialog::backdrop{background:#030912b8;backdrop-filter:blur(4px)}.dialog-heading{display:flex;justify-content:space-between;align-items:center;gap:22px;margin-bottom:18px}.dialog-heading h2{margin:0}dialog h3{color:var(--amber);font-size:18px;margin:22px 0 8px}dialog p{color:#c4d0dc}dialog code{color:var(--green);font-family:var(--mono)}dialog pre{background:#0e1721;padding:16px;overflow:auto;border-radius:5px;font:14px/1.6 var(--mono);white-space:pre-wrap}dialog table{border-collapse:collapse;width:100%;font-size:14px}dialog td{padding:8px 0;border-bottom:1px solid var(--line)}dialog td:first-child{width:43%;padding-right:12px}a{color:var(--green)}#readInput{display:block;background:#101722;border:1px solid var(--line);padding:10px;color:var(--ink);margin:10px 0;width:100%}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(min-width:1500px){.screen{max-width:740px}.editor-wrap{min-height:530px}}@media(max-width:900px){main{padding:18px 3% 0}.masthead{padding:15px 3%}.workbench{grid-template-columns:minmax(280px,46%) minmax(320px,1fr)}.workspace-heading h2{font-size:22px}.local-note{max-width:160px}.runbar{flex-wrap:wrap}.runbar kbd{display:none}.editor-actions{flex-wrap:wrap}.screen-tools{padding:8px;flex-wrap:wrap}footer>span:last-child{display:none}}@media(max-width:680px){.workbench{grid-template-columns:1fr}.editor-panel{border-right:0;border-bottom:1px solid var(--line)}.editor-wrap,#editor{height:350px;min-height:350px;flex:none}.masthead{gap:10px}.brand{gap:7px}.brand-icon{font-size:32px}h1{font-size:19px}.brand .eyebrow{font-size:10px}.bbc-stripes{display:none}.header-end{gap:6px}.header-end button{padding:7px 8px;font-size:12px}.workspace-heading h2{font-size:22px}.local-note{display:none}.workspace-heading{margin-bottom:16px}.editor-actions{flex-wrap:nowrap}footer{font-size:11px}.screen-container{padding:6px}dialog{padding:18px}.dialog-heading h2{font-size:22px}}
+
+/* Keep source line numbers from expanding the workbench. */
+#lineNumbers{position:absolute;top:0;bottom:0;left:0;width:48px;height:100%}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="brand"><span class="brand-icon" aria-hidden="true">△</span><div><h1>Turtle Room</h1><span class="eyebrow">THE LOGO COMPUTER LAB</span></div></div><div class="header-end"><span class="bbc-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i></span><button id="helpBtn">Quick guide</button><button id="offlineBtn" title="Save this complete app to use without the internet">Keep offline</button></div></header>
+<main>
+<div class="workspace-heading"><div><span class="eyebrow accent">BACK TO THE COMPUTER ROOM</span><h2>What shall we make today?</h2></div><span class="local-note">Your code stays in this browser.</span></div>
+<div class="workbench">
+<section class="editor-panel" aria-label="Logo programming editor">
+<div class="panel-heading"><span class="panel-label">01 / PROGRAM</span><span id="saveStatus" class="muted">Local draft</span></div>
+<div class="filebar"><label class="sr-only" for="examples">Example program</label><select id="examples"><option value="cube">Spinning cube · 3D</option><option value="square">Your first square</option><option value="flower">Squares in a circle</option><option value="spiral">Rainbow spiral</option><option value="tree">Recursive tree</option></select><button id="loadExample">Load</button></div>
+<div class="editor-wrap"><pre id="lineNumbers" aria-hidden="true">1</pre><textarea id="editor" aria-label="Logo source code" spellcheck="false" autocapitalize="off" autocomplete="off" wrap="off"></textarea></div>
+<div class="editor-actions"><div><button id="newBtn">New</button><button id="openBtn">Open .logo</button><button id="saveBtn">Save .logo</button></div><span id="lineCount" class="muted">1 line</span></div>
+<input id="fileInput" type="file" accept=".logo,.lgo,.txt" hidden>
+<div class="runbar"><button id="runBtn" class="primary">▶ Run program</button><button id="pauseBtn" disabled>Pause</button><button id="stopBtn" disabled>■ Stop</button><kbd title="Run shortcut">Ctrl ↵</kbd></div>
+</section>
+<section class="result-panel" aria-label="Turtle graphics output">
+<div class="panel-heading"><span class="panel-label">02 / TURTLE SCREEN</span><span id="runStatus" role="status">Ready</span></div>
+<div class="screen-container"><div class="screen"><canvas id="drawing" width="800" height="600" aria-label="Logo drawing canvas"></canvas><canvas id="turtle" width="800" height="600" aria-hidden="true"></canvas></div></div>
+<div class="screen-tools"><span id="position" class="muted">X 0 · Y 0 · 0°</span><div><button id="clearBtn">Clear screen</button><button id="pngBtn">Save image</button></div></div>
+<div class="console-heading"><span class="panel-label">COMMAND PROMPT</span><button id="clearTextBtn">Clear text</button></div>
+<pre id="console" aria-label="Logo text output">Turtle Room ready.
+Try: REPEAT 4 [FD 100 RT 90]
+</pre>
+<form id="commandForm"><span aria-hidden="true">?</span><label class="sr-only" for="command">Logo command</label><input id="command" placeholder="Type a Logo command…" autocomplete="off" spellcheck="false"><button id="sendBtn" type="submit">Enter</button></form>
+</section>
+</div>
+<footer><span><b>FD</b> forward <b>RT</b> turn right <b>REPEAT</b> do it again</span><span>Classic ideas. Endless possibilities.</span></footer>
+</main>
+<dialog id="guide"><div class="dialog-heading"><h2>Welcome back to Logo.</h2><button id="closeGuide" aria-label="Close quick guide">Close</button></div><div id="guideContent"></div></dialog>
+<dialog id="readDialog"><form id="readForm"><h2 id="readPrompt">Logo is waiting for input</h2><label for="readInput">Your answer</label><input id="readInput" autocomplete="off"><div class="dialog-actions"><button type="button" id="cancelRead">Stop program</button><button type="submit" class="primary">Enter</button></div></form></dialog>
+<script>
+
+// Flood Fill
+// https://github.com/eleks/canvasPaint/blob/master/js/index.js
+
+CanvasRenderingContext2D.prototype.floodFill = function(x, y) {
+  var context = this,
+      canvas = context.canvas,
+      w = canvas.width,
+      h = canvas.height;
+
+  x = x|0;
+  y = y|0;
+
+  // Putting the offsets in such an order as to minimize the
+  // possibility of cache miss during array access.
+  var dx = [ 0, -1, +1,  0];
+  var dy = [-1,  0,  0, +1];
+
+  // returns ARGB
+  function getColorAt(x, y) {
+    var img = context.getImageData(x, y, w, h);
+    var data = img.data;
+    return (data[3]<<24) | (data[0]<<16) | (data[1]<<8) | (data[2]);
+  }
+  var seedARGB = getColorAt(x, y);
+  context.fillRect(x, y, 1, 1);
+  var fillARGB = getColorAt(x, y);
+  if (seedARGB === fillARGB)
+    return;
+
+  var sa = (seedARGB >> 24) & 0xff,
+      sr = (seedARGB >> 16) & 0xff,
+      sg = (seedARGB >> 8) & 0xff,
+      sb = (seedARGB) & 0xff;
+
+  var fa = (fillARGB >> 24) & 0xff,
+      fr = (fillARGB >> 16) & 0xff,
+      fg = (fillARGB >> 8) & 0xff,
+      fb = (fillARGB) & 0xff;
+
+  var img = context.getImageData(0, 0, w, h);
+  var imgData = img.data;
+
+  var stack = [];
+  stack.push(x);
+  stack.push(y);
+
+  while (stack.length > 0) {
+    var curPointY = stack.pop();
+    var curPointX = stack.pop();
+
+    for (var i = 0; i < 4; i++) {
+      var nextPointX = curPointX + dx[i];
+      var nextPointY = curPointY + dy[i];
+
+      if (nextPointX < 0 || nextPointY < 0 || nextPointX >= w || nextPointY >= h) {
+        continue;
+      }
+
+      var nextPointOffset = (nextPointY * w + nextPointX) * 4;
+      if (imgData[nextPointOffset + 0] == sr &&
+          imgData[nextPointOffset + 1] == sg &&
+          imgData[nextPointOffset + 2] == sb &&
+          imgData[nextPointOffset + 3] == sa) {
+
+        imgData[nextPointOffset++] = fr;
+        imgData[nextPointOffset++] = fg;
+        imgData[nextPointOffset++] = fb;
+        imgData[nextPointOffset]   = fa;
+
+        stack.push(nextPointX);
+        stack.push(nextPointY);
+      }
+    }
+  }
+
+  context.putImageData(img, 0, 0);
+};
+
+</script><script>
+//
+// Turtle Graphics in Javascript
+//
+
+// Copyright (C) 2011 Joshua Bell
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+(function(global) {
+  'use strict';
+
+  function deg2rad(d) { return d / 180 * Math.PI; }
+  function rad2deg(r) { return r * 180 / Math.PI; }
+
+  function font(px, name) {
+    px = Number(px);
+    name = String(name).toLowerCase();
+    if (['serif', 'sans-serif', 'cursive', 'fantasy', 'monospace'].indexOf(name) === -1)
+      name = JSON.stringify(name);
+    return String(px) + 'px ' + name;
+  }
+
+  function mod(a, b) {
+    const r = a % b;
+    return r < 0 ? r + b : r;
+  }
+
+  class CanvasTurtle {
+    // --------------------------------------------------
+    // Private state
+    #clickx = 0;
+    #clicky = 0;
+    #mousex = 0;
+    #mousey = 0;
+    #buttons = 0;
+    #touches = [];
+    #down = false;
+    #last_state;
+    #turtles;
+    #currentturtle;
+    #clipboard;
+
+    // For properties
+    #penmode;
+    #turtlemode;
+    #color;
+    #bgcolor;
+    #penwidth;
+    #fontsize;
+    #fontname;
+    #visible;
+
+
+    // --------------------------------------------------
+
+    constructor(canvas_ctx, turtle_ctx, w, h, events) {
+      // Stub for old browsers w/ canvas but no text functions
+      canvas_ctx.fillText = canvas_ctx.fillText || function fillText(string, x, y) { };
+
+      this.canvas_ctx = canvas_ctx;
+      this.turtle_ctx = turtle_ctx;
+      this.width = Number(w);
+      this.height = Number(h);
+
+      this.x = this.py = 0;
+      this.y = this.py = 0;
+      this.r = Math.PI / 2;
+
+      this.sx = this.sy = 1;
+
+      this.color = '#000000';
+      this.bgcolor = '#ffffff';
+      this.penwidth = 1;
+      this.penmode = 'paint';
+      this.fontsize = 14;
+      this.fontname = 'sans-serif';
+      this.turtlemode = 'wrap';
+      this.visible = true;
+      this.pendown = true;
+
+      this.was_oob = false;
+      this.filling = 0;
+
+      this.#turtles = [{}];
+      this.#currentturtle = 0;
+
+      this.#init();
+      this.#tick();
+
+      if (events) {
+        const mouse_handler = e => {
+          const rect = events.getBoundingClientRect();
+          this.#mousemove(e.clientX - rect.left, e.clientY - rect.top, e.buttons);
+        };
+        ['mousemove', 'mousedown', 'mouseup'].forEach(e => {
+          events.addEventListener(e, mouse_handler);
+        });
+
+        const touch_handler = e => {
+          const rect = events.getBoundingClientRect();
+          const touches = [...e.touches].map(t => {
+            return {x: t.clientX - rect.left, y: t.clientY - rect.top};
+          });
+          this.#touch(touches);
+        };
+        ['touchstart', 'touchmove', 'touchend'].forEach(e => {
+          events.addEventListener(e, touch_handler);
+        });
+
+      }
+    }
+
+    // Internal methods
+
+    #init() {
+      this.turtle_ctx.lineCap = 'round';
+      this.turtle_ctx.strokeStyle = 'green';
+      this.turtle_ctx.lineWidth = 2;
+
+      this.canvas_ctx.lineCap = 'round';
+
+      // Restore canvas state controlled by properties:
+      this.color = this.color;
+      this.fontname = this.fontname;
+      this.fontsize = this.fontsize;
+      this.penmode = this.penmode;
+      this.penwidth = this.penwidth;
+
+      [this.turtle_ctx, this.canvas_ctx].forEach(ctx => {
+        ctx.setTransform(this.sx, 0, 0, -this.sy, this.width / 2, this.height / 2);
+      });
+    }
+
+    #tick() {
+      function invert(p) { return [-p[0], p[1]]; }
+
+      requestAnimationFrame(this.#tick.bind(this));
+      const cur = JSON.stringify([this.x, this.y, this.r, this.visible,
+                                  this.sx, this.sy, this.width, this.height, this.#turtles]);
+      if (cur === this.#last_state) return;
+      this.#last_state = cur;
+
+      this.turtle_ctx.save();
+      this.turtle_ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.turtle_ctx.clearRect(0, 0, this.width, this.height);
+      this.turtle_ctx.restore();
+
+      function _draw(ctx, turtle) {
+        if (turtle.visible) {
+          ctx.save();
+          ctx.translate(turtle.x, turtle.y);
+          ctx.rotate(Math.PI/2 + turtle.r);
+          ctx.beginPath();
+
+          const points = [
+            [0, -20], // Head
+            [2.5, -17],
+            [3, -12],
+
+            [6, -10],
+            [9, -13], // Arm
+            [13, -12],
+            [18, -4],
+            [18, 0],
+            [14, -1],
+            [10, -7],
+
+            [8, -6], // Shell
+            [10, -2],
+            [9, 3],
+            [6, 10],
+
+            [9, 13], // Foot
+            [6, 15],
+            [3, 12],
+
+            [0, 13],
+          ];
+
+          points.concat(points.slice(1, -1).reverse().map(invert))
+            .forEach((pair, index) => {
+              ctx[index ? 'lineTo' : 'moveTo'](pair[0], pair[1]);
+            });
+
+          ctx.closePath();
+          ctx.stroke();
+
+          ctx.restore();
+        }
+      }
+
+      _draw(this.turtle_ctx, this);
+
+      for (let i = 0; i < this.#turtles.length; ++i) {
+        if (this.#turtles[i] === undefined || i === this.currentturtle) {
+          continue;
+        }
+        _draw(this.turtle_ctx, this.#turtles[i]);
+      }
+    }
+
+    #moveto(x, y, setpos) {
+
+      const _go = (x1, y1, x2, y2) => {
+        if (this.pendown) {
+          if (this.filling) {
+            this.canvas_ctx.lineTo(x1, y1);
+            this.canvas_ctx.lineTo(x2, y2);
+          } else {
+            this.canvas_ctx.beginPath();
+            this.canvas_ctx.moveTo(x1, y1);
+            this.canvas_ctx.lineTo(x2, y2);
+            this.canvas_ctx.stroke();
+          }
+        }
+      };
+
+      const w = this.width / this.sx, h = this.height / this.sy;
+
+      const left = -w / 2, right = w / 2,
+          bottom = -h / 2, top = h / 2;
+
+      // Hack to match UCBLogo: don't draw line across viewport on
+      // `SETXY 250 10  SETXY 300 20  SETXY 350 30`
+      if (setpos && this.turtlemode === 'wrap') {
+        const oob = (x < left || x >= right || y < bottom || y >= top);
+        const px = x, py = y;
+        if (this.was_oob) {
+          const dx = mod(x + w / 2, w) - (x + w / 2);
+          const dy = mod(y + h / 2, h) - (y + h / 2);
+          x += dx;
+          y += dy;
+          this.x = this.px + dx;
+          this.y = this.py + dy;
+        }
+        this.was_oob = oob;
+        this.px = px;
+        this.py = py;
+      } else {
+        this.was_oob = false;
+      }
+
+      while (true) {
+        // TODO: What happens if we switch modes and turtle is outside bounds?
+
+        switch (this.turtlemode) {
+        case 'window':
+          _go(this.x, this.y, x, y);
+          this.x = this.px = x;
+          this.y = this.py = y;
+          return;
+
+        default:
+        case 'wrap':
+        case 'fence':
+
+          // fraction before intersecting
+          let fx = 1;
+          let fy = 1;
+
+          if (x < left) {
+            fx = (this.x - left) / (this.x - x);
+          } else if (x > right) {
+            fx = (this.x - right) / (this.x - x);
+          }
+
+          if (y < bottom) {
+            fy = (this.y - bottom) / (this.y - y);
+          } else if (y > top) {
+            fy = (this.y - top) / (this.y - y);
+          }
+
+          if (!isFinite(fx) || !isFinite(fy)) {
+            console.log('x', x, 'left', left, 'right', right);
+            console.log('y', y, 'bottom', bottom, 'top', top);
+            console.log('fx', fx, 'fy', fy);
+            throw new Error("Wrapping error: non-finite fraction");
+          }
+
+          // intersection point (draw current to here)
+          let ix = x;
+          let iy = y;
+
+          // endpoint after wrapping (next "here")
+          let wx = x;
+          let wy = y;
+          let less;
+
+          if (fx < 1 && fx <= fy) {
+            less = (x < left);
+            ix = less ? left : right;
+            iy = this.y - fx * (this.y - y);
+            x += less ? w : -w;
+            wx = less ? right : left;
+            wy = iy;
+          } else if (fy < 1 && fy <= fx) {
+            less = (y < bottom);
+            ix = this.x - fy * (this.x - x);
+            iy = less ? bottom : top;
+            y += less ? h : -h;
+            wx = ix;
+            wy = less ? top : bottom;
+          }
+
+          _go(this.x, this.y, ix, iy);
+
+          if (this.turtlemode === 'fence') {
+            // FENCE - stop on collision
+            this.x = this.px = ix;
+            this.y = this.py = iy;
+            return;
+          } else {
+            // WRAP - keep going
+            this.x = wx;
+            this.y = wy;
+            if (fx >= 1 && fy >= 1)
+              return;
+          }
+
+          break;
+        }
+      }
+    }
+
+    #mousemove(x, y, b) {
+      this.#mousex = (x - this.width / 2) / this.sx;
+      this.#mousey = (y - this.height / 2) / -this.sy;
+      this.#buttons = b;
+    }
+
+    #mouseclick(x, y, b) {
+      this.#clickx = (x - this.width / 2) / this.sx;
+      this.#clicky = (y - this.height / 2) / -this.sy;
+      this.#buttons = b;
+    }
+
+    #touch(touches) {
+      this.#touches = touches.map(touch => {
+        return [
+          (touch.x - this.width / 2) / this.sx,
+          (touch.y - this.height / 2) / -this.sy
+        ];
+      });
+    }
+
+    // API methods
+
+    resize(w, h) {
+      this.width = w;
+      this.height = h;
+      this.#init();
+    }
+
+    move(distance) {
+      const EPSILON = 1e-3;
+
+      let point = Math.abs(distance) < EPSILON;
+
+      let saved_x, saved_y;
+      if (point) {
+        saved_x = this.x;
+        saved_y = this.y;
+        distance = EPSILON;
+      }
+
+      // Mostly for tests: limit precision
+      const PRECISION = 10;
+      function precision(n) {
+        const f = Math.pow(10, PRECISION);
+        return Math.round(n * f) / f;
+      }
+
+      let x = precision(this.x + distance * Math.cos(this.r));
+      let y = precision(this.y + distance * Math.sin(this.r));
+      this.#moveto(x, y);
+
+      if (point) {
+        this.x = this.px = saved_x;
+        this.y = this.px = saved_y;
+      }
+    }
+
+    turn(angle) {
+      this.r -= deg2rad(angle);
+    }
+
+    towards(x, y) {
+      x = x;
+      y = y;
+
+      return 90 - rad2deg(Math.atan2(y - this.y, x - this.x));
+    }
+
+    clearscreen() {
+      this.home();
+      this.clearturtles();
+      this.clear();
+    }
+
+    clear() {
+      this.canvas_ctx.save();
+      try {
+        this.canvas_ctx.setTransform(1, 0, 0, 1, 0, 0);
+        this.canvas_ctx.clearRect(0, 0, this.width, this.height);
+        this.canvas_ctx.fillStyle = this.bgcolor;
+        this.canvas_ctx.fillRect(0, 0, this.width, this.height);
+      } finally {
+        this.canvas_ctx.restore();
+      }
+    }
+
+    clearturtles() {
+      this.#turtles = [{}];
+      this.#currentturtle = 0;
+    }
+
+    home() {
+      this.#moveto(0, 0);
+      this.r = deg2rad(90);
+    }
+
+    drawtext(text) {
+      this.canvas_ctx.save();
+      this.canvas_ctx.translate(this.x, this.y);
+      this.canvas_ctx.scale(1, -1);
+      this.canvas_ctx.rotate(-this.r);
+      this.canvas_ctx.fillText(text, 0, 0);
+      this.canvas_ctx.restore();
+    }
+
+    beginpath() {
+      if (this.filling === 0) {
+        this.saved_turtlemode = this.turtlemode;
+        this.turtlemode = 'window';
+        ++this.filling;
+        this.canvas_ctx.beginPath();
+      }
+    }
+
+    fillpath(fillcolor) {
+      --this.filling;
+      if (this.filling === 0) {
+        this.canvas_ctx.closePath();
+        this.canvas_ctx.fillStyle = fillcolor;
+        this.canvas_ctx.fill();
+        this.canvas_ctx.fillStyle = this.color;
+        if (this.pendown)
+          this.canvas_ctx.stroke();
+        this.turtlemode = this.saved_turtlemode;
+      }
+    }
+
+    fill() {
+      this.canvas_ctx.save();
+      this.canvas_ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this.canvas_ctx.floodFill(this.x*this.sx + this.width/2,
+                                - this.y*this.sy + this.height/2);
+      this.canvas_ctx.restore();
+    }
+
+    arc(angle, radius) {
+      if (this.turtlemode == 'wrap') {
+        [this.x,
+         this.x + this.width / this.sx,
+         this.x - this.width / this.sx].forEach(x => {
+           [this.y,
+            this.y + this.height / this.sy,
+            this.y - this.height / this.sy].forEach(y => {
+              if (!this.filling)
+                this.canvas_ctx.beginPath();
+              this.canvas_ctx.arc(x, y, radius, this.r, this.r - deg2rad(angle), angle > 0);
+              if (!this.filling)
+                this.canvas_ctx.stroke();
+            });
+         });
+      } else {
+        if (!this.filling)
+          this.canvas_ctx.beginPath();
+        this.canvas_ctx.arc(this.x, this.y, radius, this.r, this.r - deg2rad(angle), angle > 0);
+        if (!this.filling)
+          this.canvas_ctx.stroke();
+      }
+    }
+
+    getstate() {
+      return {
+        isturtlestate: true,
+        color: this.color,
+        bgcolor: this.bgcolor,
+        position: this.position,
+        heading: this.heading,
+        penmode: this.penmode,
+        turtlemode: this.turtlemode,
+        width: this.width,
+        fontsize: this.fontsize,
+        fontname: this.fontname,
+        visible: this.visible,
+        pendown: this.pendown,
+        scrunch: this.scrunch
+      };
+    }
+
+    setstate(state) {
+      if ((! state) || ! state.isturtlestate) {
+        throw new Error("Tried to restore a state that is not a turtle state");
+      }
+      this.turtlemode = state.turtlemode;
+      this.color = state.color;
+      this.bgcolor = state.bgcolor;
+      this.penwidth = state.penwidth;
+      this.fontsize = state.fontsize;
+      this.fontname = state.fontname;
+      this.position = state.position;
+      this.heading = state.heading;
+      this.penmode = state.penmode;
+      this.scrunch = state.scrunch;
+      this.visible = state.visible;
+      this.pendown = state.pendown;
+    }
+
+    copy(w, h) {
+      const x = this.width / 2 + this.x * this.sx;
+      const y = this.height / 2 - this.y * this.sy;
+      w *= this.sx;
+      h *= this.sy;
+      this.#clipboard = this.canvas_ctx.getImageData(x, y, w, h);
+    }
+
+    paste() {
+      if (!this.#clipboard)
+        return;
+
+      const x = this.width / 2 + this.x * this.sx;
+      const y = this.height / 2 - this.y * this.sy;
+      this.canvas_ctx.putImageData(this.#clipboard, x, y);
+    }
+
+    // Properties
+
+    set pendown(down) { this.#down = down; }
+    get pendown() { return this.#down; }
+
+    get penmode() { return this.#penmode; }
+    set penmode(penmode) {
+      this.#penmode = penmode;
+      this.canvas_ctx.globalCompositeOperation =
+        (this.penmode === 'erase') ? 'destination-out' :
+        (this.penmode === 'reverse') ? 'difference' : 'source-over';
+      if (penmode === 'paint')
+        this.canvas_ctx.strokeStyle = this.canvas_ctx.fillStyle = this.color;
+      else
+        this.canvas_ctx.strokeStyle = this.canvas_ctx.fillStyle = '#ffffff';
+    }
+
+    set turtlemode(turtlemode) { this.#turtlemode = turtlemode; }
+    get turtlemode() { return this.#turtlemode; }
+
+    get color() { return this.#color; }
+    set color(color) {
+      this.#color = color;
+      this.canvas_ctx.strokeStyle = this.#color;
+      this.canvas_ctx.fillStyle = this.#color;
+    }
+
+    get bgcolor() { return this.#bgcolor; }
+    set bgcolor(color) {
+      this.#bgcolor = color;
+      this.clear();
+    }
+
+    set penwidth(width) {
+      this.#penwidth = width;
+      this.canvas_ctx.lineWidth = this.#penwidth;
+    }
+    get penwidth() { return this.#penwidth; }
+
+    set fontsize(size) {
+      this.#fontsize = size;
+      this.canvas_ctx.font = font(this.fontsize, this.fontname);
+    }
+    get fontsize() { return this.#fontsize; }
+
+    set fontname(name) {
+      this.#fontname = name;
+      this.canvas_ctx.font = font(this.fontsize, this.fontname);
+    }
+    get fontname() { return this.#fontname; }
+
+    set position(coords) {
+      let x = coords[0], y = coords[1];
+      x = (x === undefined) ? this.x : x;
+      y = (y === undefined) ? this.y : y;
+      this.#moveto(x, y, /*setpos*/true);
+    }
+    get position() {
+      return [this.x, this.y];
+    }
+
+    get heading() {
+      return 90 - rad2deg(this.r);
+    }
+    set heading(angle) {
+      this.r = deg2rad(90 - angle);
+    }
+
+    set visible(visible) { this.#visible = visible; }
+    get visible() { return this.#visible; }
+
+    set scrunch(sc) {
+      const sx = sc[0], sy = sc[1];
+      this.x = this.px = this.x / sx * this.sx;
+      this.y = this.py = this.y / sy * this.sy;
+
+      for (let i = 0; i < this.#turtles.length; ++i) {
+        if (this.#turtles[i] === undefined || i == this.currentturtle) {
+          continue;
+        }
+        let t = this.#turtles[i];
+        t.x = t.x / sx * this.sx;
+        t.y = t.y / sy * this.sy;
+      }
+
+      this.sx = sx;
+      this.sy = sy;
+
+      [this.turtle_ctx, this.canvas_ctx].forEach(ctx => {
+        ctx.setTransform(this.sx, 0, 0, -this.sy, this.width / 2, this.height / 2);
+      });
+    }
+    get scrunch() {
+      return [this.sx, this.sy];
+    }
+
+    get bounds() {
+      // xmin, xmax, ymin, ymax
+      return [
+        -this.width/2/this.sx, this.width/2/this.sx,
+        -this.height/2/this.sy, this.height/2/this.sy
+      ];
+    }
+
+    get mousepos() { return [this.#mousex, this.#mousey]; }
+
+    get clickpos() { return [this.#clickx, this.#clicky]; }
+
+    get button() { return this.#buttons; }
+
+    get touches() { return this.#touches; }
+
+    get currentturtle() { return this.#currentturtle; }
+    set currentturtle(newturtle) {
+      if (newturtle === this.#currentturtle) return;
+      this.#turtles[this.#currentturtle] = {
+        x: this.x,
+        y: this.y,
+        r: this.r,
+        pendown: this.pendown,
+        visible: this.visible,
+      };
+      this.#currentturtle = newturtle;
+      if (this.#turtles[this.#currentturtle] !== undefined) {
+        this.x = this.#turtles[this.#currentturtle].x;
+        this.y = this.#turtles[this.#currentturtle].y;
+        this.r = this.#turtles[this.#currentturtle].r;
+        this.pendown = this.#turtles[this.#currentturtle].pendown;
+        this.visible = this.#turtles[this.#currentturtle].visible;
+      } else {
+        this.x = 0;
+        this.y = 0;
+        this.r = Math.PI / 2;
+        this.pendown = true;
+        this.visible = true;
+      }
+      this.#turtles[this.#currentturtle] = {};
+    }
+
+    get turtles() { return this.#turtles.length; }
+  }
+
+  global.CanvasTurtle = CanvasTurtle;
+}(self));
+
+</script><script>
+//
+// Logo Interpreter in Javascript
+//
+
+// Copyright (C) 2011 Joshua Bell
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+function LogoInterpreter(turtle, stream, savehook) {
+  'use strict';
+
+  const self = this;
+
+  const UNARY_MINUS = '<UNARYMINUS>'; // Must not parse as a word
+
+  const ERRORS = {
+    BAD_INPUT: 4,
+    NO_OUTPUT: 5,
+    NOT_ENOUGH_INPUTS: 6,
+    TOO_MANY_INPUTS: 8,
+    BAD_OUTPUT: 9,
+    MISSING_PAREN: 10,
+    BAD_VAR: 11,
+    BAD_PAREN: 12,
+    ALREADY_DEFINED: 15,
+    THROW_ERROR: 21,
+    IS_PRIMITIVE: 22,
+    BAD_PROC: 24,
+    NO_TEST: 25,
+    BAD_BRACKET: 26,
+    BAD_BRACE: 27,
+    USER_GENERATED: 35,
+    MISSING_SPACE: 39
+  };
+
+  function saveproc(name, def) {
+    if (savehook)
+      savehook(String(name).toLowerCase(), def);
+  }
+
+  //----------------------------------------------------------------------
+  //
+  // Utilities
+  //
+  //----------------------------------------------------------------------
+
+  function format(string, params) {
+    return string.replace(/{(\w+)(:[UL])?}/g, (m, n, o) => {
+      const s = (n === '_PROC_') ? self.stack.at(-1) : String(params[n]);
+      switch (o) {
+        case ':U': return s.toUpperCase();
+        case ':L': return s.toLowerCase();
+        default: return s;
+      }
+    });
+  }
+
+  // To support localized/customized messages, assign a lookup function:
+  // instance.localize = s => {
+  //   return {
+  //     'Division by zero': 'Divido per nulo',
+  //     'Index out of bounds': 'Indekso ekster limojn',
+  //     ...
+  //   }[s];
+  // };
+  this.localize = null;
+  function __(string) {
+    if (self.localize)
+      return self.localize(string) || string;
+    return string;
+  }
+
+  // Shortcut for common use of format() and __()
+  function err(string, params, code) {
+    // Allow callng as err(string, code)
+    if (typeof params === 'number') {
+      code = params;
+      params = undefined;
+    }
+    const error = new LogoError('ERROR', undefined, format(__(string), params));
+    if (code !== undefined)
+      error.code = code;
+    return error;
+  }
+
+  function LogoError(tag, value, message) {
+    this.name = 'LogoError';
+    this.message = message || format(__('No CATCH for tag {tag}'), {tag: tag});
+    this.tag = tag;
+    this.value = value;
+    this.proc = self.stack.at(-1);
+    this.code = -1; // TODO: Support code.
+    this.line = -1; // TODO: Support line.
+  }
+
+  // To handle additional keyword aliases (localizations, etc), assign
+  // a function to keywordAlias. Input will be the uppercased word,
+  // output must be one of the keywords (ELSE or END), or undefined.
+  // For example:
+  // logo.keywordAlias = name => {
+  //   return {
+  //     'ALIE': 'ELSE',
+  //     'FINO': 'END'
+  //     ...
+  //   }[name];
+  // };
+  this.keywordAlias = null;
+  function isKeyword(atom, match) {
+    if (Type(atom) !== 'word')
+      return false;
+    atom = String(atom).toUpperCase();
+    if (self.keywordAlias)
+      atom = self.keywordAlias(atom) || atom;
+    return atom === match;
+  }
+
+  // Returns a Promise that will resolve as soon as possible while ensuring
+  // that control is yielded back to the event loop at least every 20ms.
+  let lastTimeYielded = Date.now();
+  async function yieldIfNeeded() {
+    const currentTime = Date.now();
+    if (currentTime - lastTimeYielded > 20) {
+      lastTimeYielded = currentTime;
+      await new Promise(resolve => {
+        setTimeout(resolve, 0);
+      });
+    }
+  }
+
+  async function yieldForMS(msec) {
+    // Not adding msec would generally cause a yield right after the wait.
+    // Adding msec just once might cause additional tear of animations.
+    lastTimeYielded = Date.now() + msec * 2;
+    await new Promise(resolve => {
+      setTimeout(resolve, msec);
+    });
+  }
+
+  // Based on: https://www.jbouchard.net/chris/blog/2008/01/currying-in-javascript-fun-for-whole.html
+  // Argument is `$$func$$` to avoid issue if passed function is named `func`.
+  function to_arity($$func$$, arity) {
+    const parms = [];
+
+    if ($$func$$.length === arity)
+      return $$func$$;
+
+    for (let i = 0; i < arity; ++i)
+      parms.push('a' + i);
+
+    const f = eval('(function ' + $$func$$.name + '(' + parms.join(',') + ')' +
+                 '{ return $$func$$.apply(this, arguments); })');
+    return f;
+  }
+
+
+  //----------------------------------------------------------------------
+  //
+  // Classes
+  //
+  //----------------------------------------------------------------------
+
+  // Adapted from:
+  // https://stackoverflow.com/questions/424292/how-to-create-my-own-javascript-random-number-generator-that-i-can-also-set-the-s
+  class PRNG {
+    constructor(seed) {
+      this.S = seed & 0x7fffffff, // seed
+      this.A = 48271, // const
+      this.M = 0x7fffffff, // const
+      this.Q = this.M / this.A, // const
+      this.R = this.M % this.A; // const
+
+      this.next();
+    }
+
+    next() {
+      const hi = this.S / this.Q,
+            lo = this.S % this.Q,
+            t = this.A * lo - this.R * hi;
+      this.S = (t > 0) ? t : t + this.M;
+      this.last = this.S / this.M;
+      return this.last;
+    }
+
+    seed(x) {
+      this.S = x & 0x7fffffff;
+    }
+  }
+
+  class StringMap {
+    constructor(case_fold) {
+      this._map = new Map();
+      this._case_fold = case_fold;
+    }
+    get(key) {
+      key = this._case_fold ? String(key).toLowerCase() : String(key);
+      return this._map.get(key);
+    }
+    set(key, value) {
+      key = this._case_fold ? String(key).toLowerCase() : String(key);
+      this._map.set(key, value);
+    }
+    has(key) {
+      key = this._case_fold ? String(key).toLowerCase() : String(key);
+      return this._map.has(key);
+    }
+    delete(key) {
+      key = this._case_fold ? String(key).toLowerCase() : String(key);
+      return this._map.delete(key);
+    }
+    keys() {
+      const keys = [];
+      this._map.forEach((value, key) => { keys.push(key); });
+      return keys;
+    }
+    empty() {
+      return this._map.size === 0;
+    }
+    forEach(fn) {
+      return this._map.forEach((value, key) => { fn(key, value); });
+    }
+  }
+
+  class LogoArray {
+    constructor(size, origin) {
+      this._array = [];
+      this._array.length = size;
+      for (let i = 0; i < this._array.length; ++i)
+        this._array[i] = [];
+      this._origin = origin;
+    }
+    static from(list, origin) {
+      const array = new LogoArray(0, origin);
+      array._array = [...list];
+      return array;
+    }
+
+    item(i) {
+      i = Number(i)|0;
+      i -= this._origin;
+      if (i < 0 || i >= this._array.length)
+        throw err("{_PROC_}: Index out of bounds", ERRORS.BAD_INPUT);
+      return this._array[i];
+    }
+    setItem(i, v) {
+      i = Number(i)|0;
+      i -= this._origin;
+      if (i < 0 || i >= this._array.length)
+        throw err("{_PROC_}: Index out of bounds", ERRORS.BAD_INPUT);
+      this._array[i] = v;
+    }
+    get list() {
+      return this._array;
+    }
+    get origin() {
+      return this._origin;
+    }
+    get length() {
+      return this._array.length;
+    }
+  }
+
+  class Stream {
+    constructor(string) {
+      this._string = String(string);
+      this._index = 0;
+      this._skip();
+    }
+    get eof() {
+      return this._index >= this._string.length;
+    }
+    peek() {
+      let c = this._string.charAt(this._index);
+      if (c === '\\')
+        c += this._string.charAt(this._index + 1);
+      return c;
+    }
+    get() {
+      const c = this._next();
+      this._skip();
+      return c;
+    }
+    _next() {
+      let c = this._string.charAt(this._index++);
+      if (c === '\\')
+        c += this._string.charAt(this._index++);
+      return c;
+    }
+    _skip() {
+      while (!this.eof) {
+        let c = this.peek();
+        if (c === '~' && this._string.charAt(this._index + 1) === '\n') {
+          this._index += 2;
+        } else if (c === ';') {
+          do {
+            c = this._next();
+          } while (!this.eof && this.peek() !== '\n');
+          if (c === '~')
+            this._next();
+        } else {
+          return;
+        }
+      }
+    }
+    rest() {
+      return this._string.substring(this._index);
+    }
+  }
+
+  //----------------------------------------------------------------------
+  //
+  // Interpreter State
+  //
+  //----------------------------------------------------------------------
+
+  self.turtle = turtle;
+  self.stream = stream;
+  self.routines = new StringMap(true);
+  self.scopes = [new StringMap(true)];
+  self.plists = new StringMap(true);
+  self.prng = new PRNG(Math.random() * 0x7fffffff);
+  self.forceBye = false;
+
+  //----------------------------------------------------------------------
+  //
+  // Parsing
+  //
+  //----------------------------------------------------------------------
+
+  // Used to return values from routines (thrown/caught)
+  class Output {
+    constructor(output) { this.output = output; }
+    toString() { return this.output; }
+    valueOf() { return this.output; }
+  }
+
+  // Used to stop processing cleanly
+  class Bye { }
+
+  function Type(atom) {
+    if (atom === undefined) {
+      // TODO: Should be caught higher upstream than this
+      throw err("No output from procedure", ERRORS.NO_OUTPUT);
+    } else if (typeof atom === 'string' || typeof atom === 'number') {
+      return 'word';
+    } else if (Array.isArray(atom)) {
+      return 'list';
+    } else if (atom instanceof LogoArray) {
+      return 'array';
+    } else if ('then' in Object(atom)) {
+      throw new Error("Internal error: Unexpected value: a promise");
+    } else if (!atom) {
+      throw new Error("Internal error: Unexpected value: null");
+    } else {
+      throw new Error("Internal error: Unexpected value: unknown type");
+    }
+  }
+
+
+  //
+  // Tokenize into atoms / lists
+  //
+  // Input: string
+  // Output: atom list (e.g. "to", "jump", "repeat", "random", 10, [ "fd", "10", "rt", "10" ], "end"
+  //
+
+  function parse(string) {
+    if (string === undefined) {
+      return undefined; // TODO: Replace this with ...?
+    }
+
+    let atoms = [],
+        prev;
+
+    const stream = new Stream(string);
+    while (stream.peek()) {
+      let atom;
+
+      // Ignore (but track) leading space - needed for unary minus disambiguation
+      const leading_space = isWS(stream.peek());
+      while (isWS(stream.peek()))
+        stream.get();
+      if (!stream.peek())
+        break;
+
+      if (stream.peek() === '[') {
+        stream.get();
+        atom = parseList(stream);
+      } else if (stream.peek() === ']') {
+        throw err("Unexpected ']'", ERRORS.BAD_BRACKET);
+      } else if (stream.peek() === '{') {
+        stream.get();
+        atom = parseArray(stream);
+      } else if (stream.peek() === '}') {
+        throw err("Unexpected '}'", ERRORS.BAD_BRACE);
+      } else if (stream.peek() === '"') {
+        atom = parseQuoted(stream);
+      } else if (isOwnWord(stream.peek())) {
+        atom = stream.get();
+      } else if (inRange(stream.peek(), '0', '9')) {
+        atom = parseNumber(stream);
+      } else if (OPERATOR_CHARS.includes(stream.peek())) {
+        atom = parseOperator(stream);
+        // From UCB Logo:
+
+        // Minus sign means infix difference in ambiguous contexts
+        // (when preceded by a complete expression), unless it is
+        // preceded by a space and followed by a nonspace.
+
+        // Minus sign means unary minus if the previous token is an
+        // infix operator or open parenthesis, or it is preceded by a
+        // space and followed by a nonspace.
+
+        if (atom === '-') {
+          const trailing_space = isWS(stream.peek());
+          if (prev === undefined ||
+              (Type(prev) === 'word' && isInfix(prev)) ||
+              (Type(prev) === 'word' && prev === '(') ||
+              (leading_space && !trailing_space)) {
+            atom = UNARY_MINUS;
+          }
+        }
+      } else if (!WORD_DELIMITER.includes(stream.peek())) {
+        atom = parseWord(stream);
+      } else {
+        // NOTE: This shouldn't be reachable.
+        throw err("Couldn't parse: '{string}'", { string: stream.rest });
+      }
+      atoms.push(atom);
+      prev = atom;
+    }
+
+    return atoms;
+  }
+
+  function inRange(x, a, b) {
+    return a <= x && x <= b;
+  }
+
+  const WS_CHARS = ' \f\n\r\t\v';
+  // OK to call with `undefined` (returns false)
+  function isWS(c) {
+    return c && WS_CHARS.includes(c);
+  }
+
+  // "After a quotation mark outside square brackets, a word is
+  // delimited by a space, a square bracket, or a parenthesis."
+  const QUOTED_DELIMITER = WS_CHARS + '[](){}';
+  function parseQuoted(stream) {
+    let word = '';
+    while (!stream.eof && !QUOTED_DELIMITER.includes(stream.peek())) {
+      const c = stream.get();
+      word += (c.charAt(0) === '\\') ? c.charAt(1) : c.charAt(0);
+    }
+    return word;
+  }
+
+  // Non-standard: U+2190 ... U+2193 are arrows, parsed as own-words.
+  const OWNWORD_CHARS = '\u2190\u2191\u2192\u2193';
+  function isOwnWord(c) {
+    return OWNWORD_CHARS.includes(c);
+  }
+
+  // "A word not after a quotation mark or inside square brackets is
+  // delimited by a space, a bracket, a parenthesis, or an infix
+  // operator +-*/=<>. Note that words following colons are in this
+  // category. Note that quote and colon are not delimiters."
+  const WORD_DELIMITER = WS_CHARS + '[](){}+-*/%^=<>';
+  function parseWord(stream) {
+    let word = '';
+    while (!stream.eof && !WORD_DELIMITER.includes(stream.peek())) {
+      const c = stream.get();
+      word += (c.charAt(0) === '\\') ? c.charAt(1) : c.charAt(0);
+    }
+    return word;
+  }
+
+  // "Each infix operator character is a word in itself, except that
+  // the two-character sequences <=, >=, and <> (the latter meaning
+  // not-equal) with no intervening space are recognized as a single
+  // word."
+  const OPERATOR_CHARS = '+-*/%^=<>[]{}()';
+  function parseOperator(stream) {
+    let word = '';
+    if (OPERATOR_CHARS.includes(stream.peek()))
+      word += stream.get();
+    if ((word === '<' && stream.peek() === '=') ||
+        (word === '>' && stream.peek() === '=') ||
+        (word === '<' && stream.peek() === '>')) {
+      word += stream.get();
+    }
+    return word;
+  }
+
+  function isInfix(word) {
+    return ['+', '-', '*', '/', '%', '^', '=', '<', '>', '<=', '>=', '<>']
+      .includes(word);
+  }
+
+  function isOperator(word) {
+    return isInfix(word) || ['[', ']', '{', '}', '(', ')'].includes(word);
+  }
+
+  // Non-standard: Numbers support exponential notation (e.g. 1.23e-45)
+  function parseNumber(stream) {
+    let word = '';
+    while (inRange(stream.peek(), '0', '9'))
+      word += stream.get();
+    if (stream.peek() === '.')
+      word += stream.get();
+    if (inRange(stream.peek(), '0', '9')) {
+      while (inRange(stream.peek(), '0', '9'))
+        word += stream.get();
+    }
+    if (stream.peek() === 'E' || stream.peek() === 'e') {
+      word += stream.get();
+      if (stream.peek() === '-' || stream.peek() === '+')
+        word += stream.get();
+      while (inRange(stream.peek(), '0', '9'))
+        word += stream.get();
+    }
+    return word;
+  }
+
+  // Includes leading - sign, unlike parseNumber().
+  function isNumber(s) {
+    return String(s).match(/^-?([0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)$/);
+  }
+
+  function parseInteger(stream) {
+    let word = '';
+    if (stream.peek() === '-')
+      word += stream.get();
+    while (inRange(stream.peek(), '0', '9'))
+      word += stream.get();
+    return word;
+  }
+
+  function parseList(stream) {
+    const list = [];
+    let atom = '',
+        c, r;
+
+    for (;;) {
+      do {
+        c = stream.get();
+      } while (isWS(c));
+
+      while (c && !isWS(c) && !'[]{}'.includes(c)) {
+        atom += c;
+        c = stream.get();
+      }
+
+      if (atom.length) {
+        list.push(atom);
+        atom = '';
+      }
+
+      if (!c)
+        throw err("Expected ']'", ERRORS.BAD_BRACKET);
+      if (isWS(c))
+        continue;
+      if (c === ']')
+        return list;
+      if (c === '[') {
+        list.push(parseList(stream));
+        continue;
+      }
+      if (c === '{') {
+        list.push(parseArray(stream));
+        continue;
+      }
+      if (c === '}')
+        throw err("Unexpected '}'", ERRORS.BAD_BRACE);
+      throw err("Unexpected '{c}'", {c: c});
+    }
+  }
+
+  function parseArray(stream) {
+    const list = [];
+    let origin = 1,
+        atom = '',
+        c, r;
+
+    for (;;) {
+      do {
+        c = stream.get();
+      } while (isWS(c));
+
+      while (c && !isWS(c) && !'[]{}'.includes(c)) {
+        atom += c;
+        c = stream.get();
+      }
+
+      if (atom.length) {
+        list.push(atom);
+        atom = '';
+      }
+
+      if (!c)
+        throw err("Expected '}'", ERRORS.BAD_BRACE);
+      if (isWS(c))
+        continue;
+      if (c === '}') {
+        while (isWS(stream.peek()))
+          stream.get();
+        if (stream.peek() === '@') {
+          stream.get();
+          while (isWS(stream.peek()))
+            stream.get();
+          origin = Number(parseInteger(stream) || 0);
+        }
+        return LogoArray.from(list, origin);
+      }
+      if (c === '[') {
+        list.push(parseList(stream));
+        continue;
+      }
+      if (c === ']')
+        throw err("Unexpected ']'", ERRORS.BAD_BRACKET);
+      if (c === '{') {
+        list.push(parseArray(stream));
+        continue;
+      }
+      throw err("Unexpected '{c}'", {c: c});
+    }
+  }
+
+  // Needed when a word or list is treated as an expression or statements, e.g.:
+  // input: ':x>10' or [ ':x>10' ] or [ ':x>', '10' ]
+  // output: [ ':x', '>', '10' ]     (three words)
+  function reparse(thing) {
+    if (Type(thing) === 'list') {
+      thing = stringify_nodecorate(thing).replace(/([\\;])/g, '\\$1');
+    }
+    return parse(thing);
+  }
+
+  function maybegetvar(name) {
+    const lval = lvalue(name);
+    return lval ? lval.value : undefined;
+  }
+
+  function getvar(name) {
+    const value = maybegetvar(name);
+    if (value !== undefined)
+      return value;
+    throw err("Don't know about variable {name:U}", {name: name}, ERRORS.BAD_VAR);
+  }
+
+  function getslot(name) {
+    const value = self.slots ? self.slots(name) : undefined;
+    if (value !== undefined)
+      return value;
+    throw err("Don't know about variable {name:U}", {name: name}, ERRORS.BAD_VAR);
+  }
+
+  function lvalue(name) {
+    for (let i = self.scopes.length - 1; i >= 0; --i) {
+      if (self.scopes[i].has(name)) {
+        return self.scopes[i].get(name);
+      }
+    }
+    return undefined;
+  }
+
+  function setvar(name, value) {
+    value = copy(value);
+
+    // Find the variable in existing scope
+    let lval = lvalue(name);
+    if (lval) {
+      lval.value = value;
+    } else {
+      // Otherwise, define a global
+      lval = {value: value};
+      self.scopes[0].set(name, lval);
+    }
+  }
+
+  function local(name) {
+    const scope = self.scopes.at(-1);
+    scope.set(sexpr(name), {value: undefined});
+  }
+
+  function setlocal(name, value) {
+    value = copy(value);
+    const scope = self.scopes.at(-1);
+    scope.set(sexpr(name), {value: value});
+  }
+
+  //----------------------------------------------------------------------
+  //
+  // Expression Evaluation
+  //
+  //----------------------------------------------------------------------
+
+  // Expression               := RelationalExpression
+  // RelationalExpression     := AdditiveExpression [ ( '=' | '<' | '>' | '<=' | '>=' | '<>' ) AdditiveExpression ... ]
+  // AdditiveExpression       := MultiplicativeExpression [ ( '+' | '-' ) MultiplicativeExpression ... ]
+  // MultiplicativeExpression := PowerExpression [ ( '*' | '/' | '%' ) PowerExpression ... ]
+  // PowerExpression          := UnaryExpression [ '^' UnaryExpression ]
+  // UnaryExpression          := ( '-' ) UnaryExpression
+  //                           | FinalExpression
+  // FinalExpression          := string-literal
+  //                           | number-literal
+  //                           | list
+  //                           | variable-reference
+  //                           | procedure-call
+  //                           | '(' Expression ')'
+
+  // Peek at the list to see if there are additional atoms from a set
+  // of options.
+  function peek(list, options) {
+    if (list.length < 1) { return false; }
+    const next = list[0];
+    return options.some(x => next === x);
+
+  }
+
+  function evaluateExpression(list) {
+    return (expression(list))();
+  }
+
+  function expression(list) {
+    return relationalExpression(list);
+  }
+
+  function relationalExpression(list) {
+    let lhs = additiveExpression(list);
+    while (peek(list, ['=', '<', '>', '<=', '>=', '<>'])) {
+      const op = list.shift();
+      lhs = (lhs => {
+        const rhs = additiveExpression(list);
+
+        switch (op) {
+        case "<": return async () => (aexpr(await lhs()) < aexpr(await rhs())) ? 1 : 0;
+        case ">": return async () => (aexpr(await lhs()) > aexpr(await rhs())) ? 1 : 0;
+        case "=": return async () => equal(await lhs(), await rhs()) ? 1 : 0;
+
+        case "<=": return async () => (aexpr(await lhs()) <= aexpr(await rhs())) ? 1 : 0;
+        case ">=": return async () => (aexpr(await lhs()) >= aexpr(await rhs())) ? 1 : 0;
+        case "<>": return async () => !equal(await lhs(), await rhs()) ? 1 : 0;
+        default: throw new Error("Internal error in expression parser");
+        }
+      })(lhs);
+    }
+
+    return lhs;
+  }
+
+  function additiveExpression(list) {
+    let lhs = multiplicativeExpression(list);
+    while (peek(list, ['+', '-'])) {
+      const op = list.shift();
+      lhs = (lhs => {
+        const rhs = multiplicativeExpression(list);
+
+        switch (op) {
+        case "+": return async () => aexpr(await lhs()) + aexpr(await rhs());
+        case "-": return async () => aexpr(await lhs()) - aexpr(await rhs());
+        default: throw new Error("Internal error in expression parser");
+        }
+      })(lhs);
+    }
+
+    return lhs;
+  }
+
+  function multiplicativeExpression(list) {
+    let lhs = powerExpression(list);
+    while (peek(list, ['*', '/', '%'])) {
+      const op = list.shift();
+      lhs = (lhs => {
+        const rhs = powerExpression(list);
+
+        switch (op) {
+        case "*": return async () => aexpr(await lhs()) * aexpr(await rhs());
+        case "/": return async () => {
+          const n = aexpr(await lhs()), d = aexpr(await rhs());
+          if (d === 0) { throw err("Division by zero", ERRORS.BAD_INPUT); }
+          return n / d;
+        };
+        case "%": return async () => {
+          const n = aexpr(await lhs()), d = aexpr(await rhs());
+          if (d === 0) { throw err("Division by zero", ERRORS.BAD_INPUT); }
+          return n % d;
+        };
+        default: throw new Error("Internal error in expression parser");
+        }
+      })(lhs);
+    }
+
+    return lhs;
+  }
+
+  function powerExpression(list) {
+    let lhs = unaryExpression(list);
+    while (peek(list, ['^'])) {
+      const op = list.shift();
+      lhs = (lhs => {
+        const rhs = unaryExpression(list);
+
+        return async () => Math.pow(aexpr(await lhs()), aexpr(await rhs()));
+      })(lhs);
+    }
+
+    return lhs;
+  }
+
+  function unaryExpression(list) {
+    if (peek(list, [UNARY_MINUS])) {
+      const op = list.shift();
+      const rhs = unaryExpression(list);
+      return async () => -aexpr(await rhs());
+    } else {
+      return finalExpression(list);
+    }
+  }
+
+  function finalExpression(list) {
+    if (!list.length)
+      throw err("Unexpected end of instructions", ERRORS.MISSING_PAREN);
+
+    let atom = list.shift();
+
+    let result, literal, varname;
+
+    switch (Type(atom)) {
+    case 'array':
+    case 'list':
+      return () => atom;
+
+    case 'word':
+      if (isNumber(atom)) {
+        // number literal
+        atom = parseFloat(atom);
+        return () => atom;
+      }
+
+      atom = String(atom);
+      if (atom.charAt(0) === '"' || atom.charAt(0) === "'") {
+        // string literal
+        literal = atom.substring(1);
+        return () => literal;
+      }
+      if (atom.charAt(0) === ':') {
+        // variable
+        varname = atom.substring(1);
+        return () => getvar(varname);
+      }
+      if (atom.match(/^\?\d*$/)) {
+        // template slot
+        return () => getslot(atom.substring(1));
+      }
+      if (atom === '(') {
+        // parenthesized expression/procedure call
+        if (list.length && Type(list[0]) === 'word' && self.routines.has(String(list[0])) &&
+            !(list.length > 1 && Type(list[1]) === 'word' && isInfix(String(list[1])))) {
+          // Lisp-style (procedure input ...) calling syntax
+          atom = list.shift();
+          return self.dispatch(atom, list, false);
+        }
+        // Standard parenthesized expression
+        result = expression(list);
+
+        if (!list.length)
+          throw err("Expected ')'", ERRORS.MISSING_PAREN);
+        if (!peek(list, [')']))
+          throw err("Expected ')', saw {word}", { word: list.shift() }, ERRORS.MISSING_PAREN);
+        list.shift();
+        return result;
+      }
+      if (atom === ')')
+        throw err("Unexpected ')'", ERRORS.BAD_PAREN);
+      // Procedure dispatch
+      return self.dispatch(atom, list, true);
+
+    default: throw new Error("Internal error in expression parser");
+    }
+  }
+
+  self.stack = [];
+
+  self.dispatch = (name, tokenlist, natural) => {
+    name = name.toUpperCase();
+    const procedure = self.routines.get(name);
+    if (!procedure) {
+
+      // Give a helpful message in a common error case.
+      let m;
+      if ((m = /^(\w+?)(\d+)$/.exec(name)) && self.routines.get(m[1])) {
+        throw err("Need a space between {name:U} and {value}",
+                  { name: m[1], value: m[2] }, ERRORS.MISSING_SPACE);
+      }
+
+      throw err("Don't know how to {name:U}", { name: name }, ERRORS.BAD_PROC);
+    }
+
+    if (procedure.special) {
+      // Special routines are built-ins that get handed the token list:
+      // * workspace modifiers like TO that special-case varnames
+      self.stack.push(name);
+      try {
+        procedure.call(self, tokenlist);
+        return () => { };
+      } finally {
+        self.stack.pop();
+      }
+    }
+
+    const args = [];
+    if (natural) {
+      // Natural arity of the function
+      for (let i = 0; i < procedure.default; ++i) {
+        args.push(expression(tokenlist));
+      }
+    } else {
+      // Caller specified argument count
+      while (tokenlist.length && !peek(tokenlist, [')'])) {
+        args.push(expression(tokenlist));
+      }
+      if (!tokenlist.length || tokenlist[0] !== ')')
+            throw err("Expected ')'", ERRORS.MISSING_PAREN);
+      tokenlist.shift(); // Consume ')'
+
+      if (args.length < procedure.minimum)
+        throw err("Not enough inputs for {name:U}", {name: name}, ERRORS.NOT_ENOUGH_INPUTS);
+      if (procedure.maximum !== -1 && args.length > procedure.maximum)
+        throw err("Too many inputs for {name:U}", {name: name}, ERRORS.TOO_MANY_INPUTS);
+    }
+
+    if (procedure.noeval) {
+      return async () => {
+        self.stack.push(name);
+        try {
+          return procedure.apply(self, args);
+        } finally {
+          self.stack.pop();
+        }
+      };
+    }
+
+    return async () => {
+      self.stack.push(name);
+      try {
+        const a = [];
+        for (const proc of args) {
+          a.push(await proc());
+        }
+        return await procedure.apply(self, a);
+      } finally {
+        self.stack.pop();
+      }
+    };
+  };
+
+  //----------------------------------------------------------------------
+  // Arithmetic expression convenience function
+  //----------------------------------------------------------------------
+  function aexpr(atom) {
+    if (atom === undefined) {
+      throw err("Expected number", ERRORS.BAD_INPUT);
+    }
+    switch (Type(atom)) {
+    case 'word':
+      if (isNumber(atom))
+        return parseFloat(atom);
+      break;
+    }
+    throw err("Expected number", ERRORS.BAD_INPUT);
+  }
+
+  //----------------------------------------------------------------------
+  // Boolean expression convenience function
+  //----------------------------------------------------------------------
+  function bexpr(atom) {
+    if (atom === undefined) {
+      throw err("Expected true or false ", ERRORS.BAD_INPUT);
+    }
+    switch (Type(atom)) {
+    case 'word':
+      if (String(atom).toLowerCase() == 'true')
+        return true;
+      if (String(atom).toLowerCase() == 'false')
+        return false;
+      if (isNumber(atom))
+        return Boolean(parseFloat(atom));
+      break;
+    }
+    throw err("Expected true or false", ERRORS.BAD_INPUT);
+  }
+
+  //----------------------------------------------------------------------
+  // String expression convenience function
+  //----------------------------------------------------------------------
+  function sexpr(atom) {
+    if (atom === undefined) throw err("Expected string", ERRORS.BAD_INPUT);
+    if (atom === UNARY_MINUS) return '-';
+    if (Type(atom) === 'word') return String(atom);
+
+    throw new err("Expected string", ERRORS.BAD_INPUT);
+  }
+
+  //----------------------------------------------------------------------
+  // List expression convenience function
+  //----------------------------------------------------------------------
+
+  // 'list expression'
+  // Takes an atom - if it is a list is is returned unchanged. If it
+  // is a word a list of the characters is returned. If the procedure
+  // returns a list, the output type should match the input type, so
+  // use sifw().
+  function lexpr(atom) {
+    if (atom === undefined)
+      throw err("{_PROC_}: Expected list", ERRORS.BAD_INPUT);
+    switch (Type(atom)) {
+    case 'word':
+      return [...String(atom)];
+    case 'list':
+      return copy(atom);
+    }
+
+    throw err("{_PROC_}: Expected list", ERRORS.BAD_INPUT);
+  }
+
+  // 'stringify if word'
+  // Takes an atom which is to be the subject of lexpr() and a result
+  // list. If the atom is a word, returns a word, otherwise a list.
+  function sifw(atom, list) {
+    return (Type(atom) === 'word') ? list.join('') : list;
+  }
+
+  //----------------------------------------------------------------------
+  // Returns a deep copy of a value (word or list). Arrays are copied
+  // by reference.
+  //----------------------------------------------------------------------
+  function copy(value) {
+    switch (Type(value)) {
+    case 'list': return value.map(copy);
+    default: return value;
+    }
+  }
+
+  //----------------------------------------------------------------------
+  // Deep compare of values (numbers, strings, lists)
+  //----------------------------------------------------------------------
+  function equal(a, b) {
+    if (Type(a) !== Type(b)) return false;
+    switch (Type(a)) {
+    case 'word':
+      if (typeof a === 'number' || typeof b === 'number')
+        return Number(a) === Number(b);
+      else
+        return String(a) === String(b);
+    case 'list':
+      if (a.length !== b.length)
+        return false;
+      for (let i = 0; i < a.length; ++i) {
+        if (!equal(a[i], b[i]))
+          return false;
+      }
+      return true;
+    case 'array':
+      return a === b;
+    }
+    return undefined;
+  }
+
+  //----------------------------------------------------------------------
+  //
+  // Execute a script
+  //
+  //----------------------------------------------------------------------
+
+  //----------------------------------------------------------------------
+  // Execute a sequence of statements
+  //----------------------------------------------------------------------
+  self.execute = async (statements, options = {}) => {
+    // Turtle Room: allow Stop to interrupt even an empty FOREVER block.
+    if (self.forceBye) { self.forceBye = false; throw new Bye; }
+    // Operate on a copy so the original is not destroyed
+    statements = statements.slice();
+
+    let lastResult;
+    while (statements.length) {
+      if (self.forceBye) {
+        self.forceBye = false;
+        throw new Bye;
+      }
+      const result = await evaluateExpression(statements);
+      if (result !== undefined && !options.returnResult) {
+        throw err("Don't know what to do with {result}", {result: result},
+                  ERRORS.BAD_OUTPUT);
+      }
+      lastResult = result;
+    }
+    return lastResult;
+  };
+
+  // FIXME: should this confirm that something is running?
+  self.bye = () => {
+    self.forceBye = true;
+  };
+
+  let lastRun = Promise.resolve();
+
+  // Call to insert an arbitrary task (callback) to be run in sequence
+  // with pending calls to run. Useful in tests to do work just before
+  // a subsequent assertion.
+  self.queueTask = task => {
+    const promise = lastRun.then(() => {
+      return Promise.resolve(task());
+    });
+    lastRun = promise.catch(() =>{});
+    return promise;
+  };
+
+  self.run = (string, options = {}) => {
+    return self.queueTask(async () => {
+      // Parse it
+      const atoms = parse(string);
+
+      // And execute it!
+      try {
+        return await self.execute(atoms, options);
+      } catch(err) {
+        if (err instanceof Bye)
+          return undefined;
+        throw err;
+      }
+    });
+  };
+
+  self.definition = (name, proc) => {
+
+    function defn(atom) {
+      switch (Type(atom)) {
+      case 'word': return String(atom);
+      case 'list': return '[ ' + atom.map(defn).join(' ') + ' ]';
+      case 'array': return '{ ' + atom.list.map(defn).join(' ') + ' }' +
+          (atom.origin === 1 ? '' : '@' + atom.origin);
+      default: throw new Error("Internal error: unknown type");
+      }
+    }
+
+    let def = "to " + name;
+
+    def += proc.inputs.map(i => ' :' + i).join('');
+    def += proc.optional_inputs.map(op =>
+      ' [:' + op[0] + ' ' + op[1].map(defn).join(' ') + ']'
+    ).join('');
+    if (proc.rest)
+      def += ' [:' + proc.rest + ']';
+    if (proc.def !== undefined)
+      def += ' ' + proc.def;
+
+    def += "\n";
+    def += "  " + proc.block.map(defn).join(" ").replace(new RegExp(UNARY_MINUS + ' ', 'g'), '-');
+    def += "\n" + "end";
+
+    return def;
+  };
+
+  // API to allow pages to persist definitions
+  self.procdefs = () => {
+    const defs = [];
+    self.routines.forEach((name, proc) => {
+      if (!proc.primitive) {
+        defs.push(self.definition(name, proc));
+      }
+    });
+    return defs.join("\n\n");
+  };
+
+  // API to allow aliasing. Can be used for localization. Does not
+  // check for errors.
+  self.copydef = (newname, oldname) => {
+    self.routines.set(newname, self.routines.get(oldname));
+  };
+
+  //----------------------------------------------------------------------
+  //
+  // Built-In Proceedures
+  //
+  //----------------------------------------------------------------------
+
+  // Basic form:
+  //
+  //  def("procname", (input1, input2, ...) => { ... return output; });
+  //   * inputs are JavaScript strings, numbers, or Arrays
+  //   * output is string, number, Array or undefined/no output
+  //
+  // Special forms:
+  //
+  //  def("procname", (tokenlist) => { ... }, {special: true});
+  //   * input is Array (list) of tokens (words, numbers, Arrays)
+  //   * used for implementation of special forms (e.g. TO inputs... statements... END)
+  //
+  //  def("procname", (fin, fin, ...) => { ... return op; }, {noeval: true});
+  //   * inputs are arity-0 functions that evaluate to string, number Array
+  //   * used for short-circuiting evaluation (AND, OR)
+  //   * used for repeat evaluation (DO.WHILE, WHILE, DO.UNTIL, UNTIL)
+  //
+
+  function stringify(thing) {
+    switch (Type(thing)) {
+    case 'list':
+      return "[" + thing.map(stringify).join(" ") + "]";
+    case 'array':
+      return "{" + thing.list.map(stringify).join(" ") + "}" +
+        (thing.origin === 1 ? '' : '@' + thing.origin);
+    default:
+      return sexpr(thing);
+    }
+  }
+
+  function stringify_nodecorate(thing) {
+    switch (Type(thing)) {
+    case 'list':
+      return thing.map(stringify).join(" ");
+    case 'array':
+      return thing.list.map(stringify).join(" ");
+    default:
+      return sexpr(thing);
+    }
+  }
+
+  function def(name, fn, props) {
+    fn.minimum = fn.default = fn.maximum = fn.length;
+    if (props) {
+      Object.keys(props).forEach(key => {
+        fn[key] = props[key];
+      });
+    }
+    fn.primitive = true;
+    if (Array.isArray(name)) {
+      name.forEach(name => {
+        self.routines.set(name, fn);
+      });
+    } else {
+      self.routines.set(name, fn);
+    }
+  }
+
+  //
+  // Procedures and Flow Control
+  //
+  def("to", list => {
+    const name = sexpr(list.shift());
+    if (isNumber(name) || isOperator(name))
+      throw err("TO: Expected identifier", ERRORS.BAD_INPUT);
+
+    const inputs = []; // [var, ...]
+    const optional_inputs = []; // [[var, [expr...]], ...]
+    let rest = undefined; // undefined or var
+    let length = undefined; // undefined or number
+    const block = [];
+
+    // Process inputs, then the statements of the block
+    const REQUIRED = 0, OPTIONAL = 1, REST = 2, DEFAULT = 3, BLOCK = 4;
+    let state = REQUIRED, sawEnd = false;
+    while (list.length) {
+      const atom = list.shift();
+      if (isKeyword(atom, 'END')) {
+        sawEnd = true;
+        break;
+      }
+
+      if (state === REQUIRED) {
+        if (Type(atom) === 'word' && String(atom).charAt(0) === ':') {
+          inputs.push(atom.substring(1));
+          continue;
+        }
+        state = OPTIONAL;
+      }
+
+      if (state === OPTIONAL) {
+        if (Type(atom) === 'list' && atom.length > 1 &&
+            String(atom[0]).charAt(0) === ':') {
+          optional_inputs.push([atom.shift().substring(1), atom]);
+          continue;
+        }
+        state = REST;
+      }
+
+      if (state === REST) {
+        state = DEFAULT;
+        if (Type(atom) === 'list' && atom.length === 1 &&
+            String(atom[0]).charAt(0) === ':') {
+          rest = atom[0].substring(1);
+          continue;
+        }
+      }
+
+      if (state === DEFAULT) {
+        state = BLOCK;
+        if (Type(atom) === 'word' && isNumber(atom)) {
+          length = parseFloat(atom);
+          continue;
+        }
+      }
+
+      block.push(atom);
+    }
+    if (!sawEnd)
+      throw err("TO: Expected END", ERRORS.BAD_INPUT);
+
+    defineAndSaveProc(name, inputs, optional_inputs, rest, length, block);
+  }, {special: true});
+
+  function defineAndSaveProc(name, inputs, optional_inputs, rest, def, block) {
+    if (self.routines.has(name) && self.routines.get(name).primitive)
+      throw err("{_PROC_}: Can't redefine primitive {name:U}", { name: name },
+                ERRORS.IS_PRIMITIVE);
+
+    const proc = defineProc(name, inputs, optional_inputs, rest, def, block);
+    self.routines.set(name, proc);
+
+    // For DEF de-serialization
+    proc.inputs = inputs;
+    proc.optional_inputs = optional_inputs;
+    proc.rest = rest;
+    proc.def = def;
+    proc.block = block;
+
+    proc.minimum = inputs.length;
+    proc.default = proc.length;
+    proc.maximum = rest ? -1 : inputs.length + optional_inputs.length;
+
+    saveproc(name, self.definition(name, proc));
+  }
+
+  function defineProc(name, inputs, optional_inputs, rest, def, block) {
+    if (def !== undefined &&
+        (def < inputs.length || (!rest && def > inputs.length + optional_inputs.length))) {
+      if (name) {
+        throw err("{_PROC_}: Bad default number of inputs for {name:U}", {name: name},
+                  ERRORS.BAD_INPUT);
+      } else {
+        throw err("{_PROC_}: Bad default number of inputs for lambda", ERRORS.BAD_INPUT);
+      }
+    }
+
+    const length = (def === undefined) ? inputs.length : def;
+
+    // Closure over inputs and block to handle scopes, arguments and outputs
+    return to_arity(async (...args) => {
+      // Define a new scope
+      const scope = new StringMap(true);
+      self.scopes.push(scope);
+
+      let i = 0;
+      for (; i < inputs.length && i < args.length; ++i)
+        scope.set(inputs[i], {value: args[i]});
+      for (; i < inputs.length + optional_inputs.length && i < args.length; ++i) {
+        const op = optional_inputs[i - inputs.length];
+        scope.set(op[0], {value: args[i]});
+      }
+      for (; i < inputs.length + optional_inputs.length; ++i) {
+        const op = optional_inputs[i - inputs.length];
+        scope.set(op[0], {value: evaluateExpression(reparse(op[1]))});
+      }
+      if (rest)
+        scope.set(rest, {value: args.slice(i)});
+
+      try {
+        await self.execute(block);
+        await yieldIfNeeded();
+        return undefined;
+      } catch (err) {
+        if (err instanceof Output)
+          return err.output;
+        throw err;
+      } finally {
+        self.scopes.pop();
+      }
+    }, length);
+  }
+
+
+  def("def", list => {
+
+    const name = sexpr(list);
+    const proc = this.routines.get(name);
+    if (!proc)
+      throw err("{_PROC_}: Don't know how to {name:U}", { name: name }, ERRORS.BAD_PROC);
+    if (!proc.inputs) {
+      throw err("{_PROC_}: Can't show definition of primitive {name:U}", { name: name },
+               ERRORS.IS_PRIMITIVE);
+    }
+
+    return this.definition(name, proc);
+  });
+
+
+  //----------------------------------------------------------------------
+  //
+  // 2. Data Structure Primitives
+  //
+  //----------------------------------------------------------------------
+
+  //
+  // 2.1 Constructors
+  //
+
+  def("word", (...words) => {
+    return words.length ? words.map(sexpr).reduce((a, b) => a + b) : "";
+  }, {minimum: 0, default: 2, maximum: -1});
+
+  def("list", (...things) => {
+    return things.map(x => x); // Make a copy
+  }, {minimum: 0, default: 2, maximum: -1});
+
+  def(["sentence", "se"], (...things) => {
+    let list = [];
+    for (let thing of things) {
+      if (Type(thing) === 'list') {
+        thing = lexpr(thing);
+        list = list.concat(thing);
+      } else {
+        list.push(thing);
+      }
+    }
+    return list;
+  }, {minimum: 0, default: 2, maximum: -1});
+
+  def("fput", (thing, list) => {
+    const l = lexpr(list);
+    l.unshift(thing);
+    return sifw(list, l);
+  });
+
+  def("lput", (thing, list) => {
+    const l = lexpr(list);
+    l.push(thing);
+    return sifw(list, l);
+  });
+
+  def("array", (size, origin=undefined) => {
+    size = aexpr(size);
+    if (size < 1)
+      throw err("{_PROC_}: Array size must be positive integer", ERRORS.BAD_INPUT);
+    origin = (origin === undefined) ? 1 : aexpr(origin);
+    return new LogoArray(size, origin);
+  }, {maximum: 2});
+
+  def("mdarray", (sizes, origin=undefined) => {
+    sizes = lexpr(sizes).map(aexpr).map(n =>n|0);
+    if (sizes.some(size => size < 1))
+      throw err("{_PROC_}: Array size must be positive integer", ERRORS.BAD_INPUT);
+    origin = (origin === undefined) ? 1 : aexpr(origin);
+
+    function make(index) {
+      const n = sizes[index], a = new LogoArray(n, origin);
+      if (index + 1 < sizes.length) {
+        for (let i = 0; i < n; ++i)
+          a.setItem(i + origin, make(index + 1));
+      }
+      return a;
+    }
+
+    return make(0);
+  }, {maximum: 2});
+
+  def("listtoarray", (list, origin=undefined) => {
+    list = lexpr(list);
+    origin = (origin === undefined) ? 1 : aexpr(origin);
+    return LogoArray.from(list, origin);
+  }, {maximum: 2});
+
+  def("arraytolist", array => {
+    if (Type(array) !== 'array') {
+      throw err("{_PROC_}: Expected array", ERRORS.BAD_INPUT);
+    }
+    return array.list.slice();
+  });
+
+  def("combine", (thing1, thing2) => {
+    if (Type(thing2) !== 'list') {
+      return this.routines.get('word')(thing1, thing2);
+    } else {
+      return this.routines.get('fput')(thing1, thing2);
+    }
+  });
+
+  def("reverse", (list, tail=undefined) => {
+    tail = (tail !== undefined) ? tail : (Type(list) === 'list' ? [] : '');
+    return sifw(tail, lexpr(list).reverse().concat(lexpr(tail)));
+  }, {maximum: 2});
+
+  this.gensym_index = 0;
+  def("gensym", () => {
+    ++this.gensym_index;
+    return 'G' + this.gensym_index;
+  });
+
+  //
+  // 2.2 Data Selectors
+  //
+
+  def("first", list => lexpr(list)[0]);
+
+  def("firsts", list => lexpr(list).map(x => x[0]));
+
+  def("last", list => { list = lexpr(list); return list.at(-1); });
+
+  def(["butfirst", "bf"], list => sifw(list, lexpr(list).slice(1)));
+
+  def(["butfirsts", "bfs"], list =>
+      lexpr(list).map(x => sifw(x, lexpr(x).slice(1)))
+     );
+
+  def(["butlast", "bl"], list =>
+      Type(list) === 'word' ? String(list).slice(0, -1) : lexpr(list).slice(0, -1)
+     );
+
+  function item(index, thing) {
+    switch (Type(thing)) {
+    case 'list':
+      if (index < 1 || index > thing.length)
+        throw err("{_PROC_}: Index out of bounds", ERRORS.BAD_INPUT);
+      return thing[index - 1];
+    case 'array':
+      return thing.item(index);
+    default:
+      thing = sexpr(thing);
+      if (index < 1 || index > thing.length)
+        throw err("{_PROC_}: Index out of bounds", ERRORS.BAD_INPUT);
+      return thing.charAt(index - 1);
+    }
+  }
+
+  def("item", (index, thing) => {
+    index = aexpr(index)|0;
+    return item(index, thing);
+  });
+
+  def("mditem", (indexes, thing) => {
+    indexes = lexpr(indexes).map(aexpr).map(n => n|0);
+    while (indexes.length)
+      thing = item(indexes.shift(), thing);
+    return thing;
+  });
+
+  def("pick", list => {
+    list = lexpr(list);
+    const i = Math.floor(this.prng.next() * list.length);
+    return list[i];
+  });
+
+  def("remove", (thing, list) =>
+      sifw(list, lexpr(list).filter(x => !equal(x, thing)))
+     );
+
+  def("remdup", list => {
+    // TODO: This only works with JS equality. Use equalp.
+    const set = new Set();
+    return sifw(list, lexpr(list).filter(x => {
+      if (set.has(x)) { return false; } else { set.add(x); return true; }
+    }));
+  });
+
+  def("split", (thing, list) => {
+    const l = lexpr(list);
+    return lexpr(list)
+      .reduce((ls, i) => (equal(i, thing) ? ls.push([]) : ls.at(-1).push(i), ls), [[]])
+      .filter(l => l.length > 0)
+      .map(e => sifw(list, e));
+  });
+
+  def("quoted", thing => {
+    if (Type(thing) === 'word')
+      return '"' + thing;
+    return thing;
+  });
+
+
+  //
+  // 2.3 Data Mutators
+  //
+
+  function contains(atom, value) {
+    if (atom === value) return true;
+    switch (Type(atom)) {
+    case 'list':
+      return atom.some(a => contains(a, value));
+    case 'array':
+      return atom.list.some(a => contains(a, value));
+    default:
+      return false;
+    }
+  }
+
+  def("setitem", (index, array, value) => {
+    index = aexpr(index);
+    if (Type(array) !== 'array')
+      throw err("{_PROC_}: Expected array", ERRORS.BAD_INPUT);
+    if (contains(value, array))
+      throw err("{_PROC_}: Can't create circular array", ERRORS.BAD_INPUT);
+    array.setItem(index, value);
+  });
+
+  def("mdsetitem", (indexes, thing, value) => {
+    indexes = lexpr(indexes).map(aexpr).map(n => n|0);
+    if (Type(thing) !== 'array')
+      throw err("{_PROC_}: Expected array", ERRORS.BAD_INPUT);
+    if (contains(value, thing))
+      throw err("{_PROC_}: Can't create circular array", ERRORS.BAD_INPUT);
+    while (indexes.length > 1) {
+      thing = item(indexes.shift(), thing);
+      if (Type(thing) !== 'array')
+        throw err("{_PROC_}: Expected array", ERRORS.BAD_INPUT);
+    }
+    thing.setItem(indexes.shift(), value);
+  });
+
+  def(".setfirst", (list, value) => {
+     if (Type(list) !== 'list')
+      throw err("{_PROC_}: Expected list", ERRORS.BAD_INPUT);
+    list[0] = value;
+  });
+
+  def(".setbf", (list, value) => {
+    if (Type(list) !== 'list')
+      throw err("{_PROC_}: Expected non-empty list", ERRORS.BAD_INPUT);
+    if (list.length < 1)
+      throw err("{_PROC_}: Expected non-empty list", ERRORS.BAD_INPUT);
+    value = lexpr(value);
+    list.length = 1;
+    list.push.apply(list, value);
+  });
+
+  def(".setitem", (index, array, value) => {
+    index = aexpr(index);
+    if (Type(array) !== 'array')
+      throw err("{_PROC_}: Expected array", ERRORS.BAD_INPUT);
+    array.setItem(index, value);
+  });
+
+  def("push", (stackname, thing) => {
+    const got = getvar(stackname);
+    const stack = lexpr(got);
+    stack.unshift(thing);
+    setvar(stackname, sifw(got, stack));
+  });
+
+  def("pop", stackname => {
+    const got = getvar(stackname);
+    const stack = lexpr(got);
+    const atom = stack.shift();
+    setvar(stackname, sifw(got, stack));
+    return atom;
+  });
+
+  def("queue", (stackname, thing) => {
+    const got = getvar(stackname);
+    const queue = lexpr(got);
+    queue.push(thing);
+    setvar(stackname, sifw(got, queue));
+  });
+
+  def("dequeue", stackname => {
+    const got = getvar(stackname);
+    const queue = lexpr(got);
+    const atom = queue.pop();
+    setvar(stackname, sifw(got, queue));
+    return atom;
+  });
+
+
+  //
+  // 2.4 Predicates
+  //
+
+  def(["wordp", "word?"], thing => Type(thing) === 'word' ? 1 : 0);
+  def(["listp", "list?"], thing => Type(thing) === 'list' ? 1 : 0);
+  def(["arrayp", "array?"], thing => Type(thing) === 'array' ? 1 : 0);
+  def(["numberp", "number?"], thing =>
+      Type(thing) === 'word' && isNumber(thing) ? 1 : 0
+  );
+  def(["numberwang"], thing => this.prng.next() < 0.5 ? 1 : 0);
+
+  def(["equalp", "equal?"], (a, b) => equal(a, b) ? 1 : 0);
+  def(["notequalp", "notequal?"], (a, b) => !equal(a, b) ? 1 : 0);
+
+  def(["emptyp", "empty?"], thing => {
+    switch (Type(thing)) {
+    case 'word': return String(thing).length === 0 ? 1 : 0;
+    case 'list': return thing.length === 0 ? 1 : 0;
+    default: return 0;
+    }
+  });
+  def(["beforep", "before?"], (word1, word2) =>
+      sexpr(word1) < sexpr(word2) ? 1 : 0
+     );
+
+  def(".eq", (a, b) => a === b && a && typeof a === 'object');
+
+  // Not Supported: vbarredp
+
+  def(["memberp", "member?"], (thing, list) =>
+      lexpr(list).some(x => equal(x, thing)) ? 1 : 0
+     );
+
+
+  def(["substringp", "substring?"], (word1, word2) =>
+      sexpr(word2).indexOf(sexpr(word1)) !== -1 ? 1 : 0
+     );
+
+  //
+  // 2.5 Queries
+  //
+
+  def("count", thing => {
+    if (Type(thing) === 'array')
+      return thing.length;
+    return lexpr(thing).length;
+  });
+  def("ascii", chr => sexpr(chr).charCodeAt(0));
+  // Not Supported: rawascii
+  def("char", integer => String.fromCharCode(aexpr(integer)));
+
+  def("member", (thing, input) => {
+    let list = lexpr(input);
+    const index = list.findIndex(x => equal(x, thing));
+    list = (index === -1) ? [] : list.slice(index);
+    return sifw(input, list);
+ });
+
+  def("lowercase", word => sexpr(word).toLowerCase());
+  def("uppercase", word => sexpr(word).toUpperCase());
+
+  def("standout", word => {
+    // Hack: Convert English alphanumerics to Mathematical Bold
+    return [...sexpr(word)]
+      .map(c => {
+        let u = c.codePointAt(0);
+        if ('A' <= c && c <= 'Z') {
+          u = u - 'A'.codePointAt(0) + 0x1D400;
+        } else if ('a' <= c && c <= 'z') {
+          u = u - 'a'.codePointAt(0) + 0x1D41A;
+        } else if ('0' <= c && c <= '9') {
+          u = u - '0'.codePointAt(0) + 0x1D7CE;
+        } else {
+          return c;
+        }
+        return String.fromCodePoint(u);
+      })
+      .join('');
+  });
+
+  def("parse", word => parse('[' + sexpr(word) + ']')[0]);
+
+  def("runparse", word => parse(sexpr(word)));
+
+  //----------------------------------------------------------------------
+  //
+  // 3. Communication
+  //
+  //----------------------------------------------------------------------
+
+  // 3.1 Transmitters
+
+  def(["print", "pr"], (...things) => {
+    const s = things.map(stringify_nodecorate).join(" ");
+    return this.stream.write(s, "\n");
+  }, {minimum: 0, default: 1, maximum: -1});
+  def("type", (...things) => {
+    const s = things.map(stringify_nodecorate).join("");
+    return this.stream.write(s);
+  }, {minimum: 0, default: 1, maximum: -1});
+  def("show", (...things) => {
+    const s = things.map(stringify).join(" ");
+    return this.stream.write(s, "\n");
+  }, {minimum: 0, default: 1, maximum: -1});
+
+  // 3.2 Receivers
+
+  def("readlist", async (promptstr=undefined) => {
+    const word = (promptstr !== undefined)
+          ? await stream.read(stringify_nodecorate(promptstr))
+          : await stream.read();
+    return parse('[' + word + ']')[0];
+  }, {maximum: 1});
+
+  def("readword", (promptstr=undefined) => {
+    if (promptstr !== undefined)
+      return stream.read(stringify_nodecorate(promptstr));
+    else
+      return stream.read();
+  }, {maximum: 1});
+
+
+  // Not Supported: readrawline
+  // Not Supported: readchar
+  // Not Supported: readchars
+  // Not Supported: shell
+
+  // 3.3 File Access
+
+  // Not Supported: setprefix
+  // Not Supported: prefix
+  // Not Supported: openread
+  // Not Supported: openwrite
+  // Not Supported: openappend
+  // Not Supported: openupdate
+  // Not Supported: close
+  // Not Supported: allopen
+  // Not Supported: closeall
+  // Not Supported: erasefile
+  // Not Supported: dribble
+  // Not Supported: nodribble
+  // Not Supported: setread
+  // Not Supported: setwrite
+  // Not Supported: reader
+  // Not Supported: writer
+  // Not Supported: setreadpos
+  // Not Supported: setwritepos
+  // Not Supported: readpos
+  // Not Supported: writepos
+  // Not Supported: eofp
+  // Not Supported: filep
+
+  // 3.4 Terminal Access
+
+  // Not Supported: keyp
+
+  def(["cleartext", "ct"], () => this.stream.clear());
+
+  // Not Supported: setcursor
+  // Not Supported: cursor
+  // Not Supported: setmargins
+
+  def('settextcolor', color => {
+    this.stream.color = parseColor(color);
+  });
+
+  def('textcolor', () => this.stream.color);
+
+  def('increasefont', () => {
+    this.stream.textsize = Math.round(this.stream.textsize * 1.25);
+  });
+
+  def('decreasefont', () => {
+    this.stream.textsize = Math.round(this.stream.textsize / 1.25);
+  });
+
+  def('settextsize', size => {
+    this.stream.textsize = aexpr(size);
+  });
+
+  def('textsize', () => this.stream.textsize);
+
+  def('setfont', size => {
+    this.stream.font = sexpr(size);
+  });
+
+  def('font', () => this.stream.font);
+
+
+  //----------------------------------------------------------------------
+  //
+  // 4. Arithmetic
+  //
+  //----------------------------------------------------------------------
+  // 4.1 Numeric Operations
+
+
+  def("sum", (...args) => args.map(aexpr).reduce((a, b) => a + b, 0),
+      {minimum: 0, default: 2, maximum: -1});
+
+  def("difference", (a, b) => aexpr(a) - aexpr(b));
+
+  def("minus", a => -aexpr(a));
+
+  def("product", (...args) => args.map(aexpr).reduce((a, b) => a * b, 1),
+      {minimum: 0, default: 2, maximum: -1});
+
+  def("quotient", (a, b) => {
+    if (b !== undefined)
+      return aexpr(a) / aexpr(b);
+    else
+      return 1 / aexpr(a);
+  }, {minimum: 1});
+
+  def("remainder", (num1, num2) => aexpr(num1) % aexpr(num2));
+
+  def("modulo", (num1, num2) => {
+    num1 = aexpr(num1);
+    num2 = aexpr(num2);
+    return Math.abs(num1 % num2) * (num2 < 0 ? -1 : 1);
+  });
+
+  def("power", (a, b) => Math.pow(aexpr(a), aexpr(b)));
+  def("sqrt", a => Math.sqrt(aexpr(a)));
+  def("exp", a => Math.exp(aexpr(a)));
+  def("log10", a => Math.log(aexpr(a)) / Math.LN10);
+  def("ln", a => Math.log(aexpr(a)));
+
+
+  function deg2rad(d) { return d / 180 * Math.PI; }
+  function rad2deg(r) { return r * 180 / Math.PI; }
+
+  def("arctan", (a, b=undefined) => {
+    if (b !== undefined) {
+      const x = aexpr(a);
+      const y = aexpr(b);
+      return rad2deg(Math.atan2(y, x));
+    } else {
+      return rad2deg(Math.atan(aexpr(a)));
+    }
+  }, {maximum: 2});
+
+  def("sin", a => Math.sin(deg2rad(aexpr(a))));
+  def("cos", a => Math.cos(deg2rad(aexpr(a))));
+  def("tan", a => Math.tan(deg2rad(aexpr(a))));
+
+  def("radarctan", (a, b=undefined) => {
+    if (b !== undefined) {
+      const x = aexpr(a);
+      const y = aexpr(b);
+      return Math.atan2(y, x);
+    } else {
+      return Math.atan(aexpr(a));
+    }
+  }, {maximum: 2});
+
+  def("radsin", a => Math.sin(aexpr(a)));
+  def("radcos", a => Math.cos(aexpr(a)));
+  def("radtan", a => Math.tan(aexpr(a)));
+
+  def("abs", a => Math.abs(aexpr(a)));
+
+
+  function truncate(x) { return parseInt(x, 10); }
+
+  def("int", a => truncate(aexpr(a)));
+  def("round", a => Math.round(aexpr(a)));
+
+  def("iseq", (a, b) => {
+    a = truncate(aexpr(a));
+    b = truncate(aexpr(b));
+    const step = (a < b) ? 1 : -1;
+    const list = [];
+    for (let i = a; (step > 0) ? (i <= b) : (i >= b); i += step) {
+      list.push(i);
+    }
+    return list;
+  });
+
+
+  def("rseq", (from, to, count) => {
+    from = aexpr(from);
+    to = aexpr(to);
+    count = truncate(aexpr(count));
+    const step = (to - from) / (count - 1);
+    const list = [];
+    for (let i = from; (step > 0) ? (i <= to) : (i >= to); i += step) {
+      list.push(i);
+    }
+    return list;
+  });
+
+  // 4.2 Numeric Predicates
+
+  def(["greaterp", "greater?"], (a, b) => aexpr(a) > aexpr(b) ? 1 : 0);
+  def(["greaterequalp", "greaterequal?"], (a, b) => aexpr(a) >= aexpr(b) ? 1 : 0);
+  def(["lessp", "less?"], (a, b) => aexpr(a) < aexpr(b) ? 1 : 0);
+  def(["lessequalp", "lessequal?"], (a, b) => aexpr(a) <= aexpr(b) ? 1 : 0);
+
+  // 4.3 Random Numbers
+
+  def("random", (a, b=undefined) => {
+    if (b === undefined) {
+      const max = aexpr(a);
+      return Math.floor(this.prng.next() * max);
+    } else {
+      const start = aexpr(a);
+      const end = aexpr(b);
+      return Math.floor(this.prng.next() * (end - start + 1)) + start;
+    }
+  }, {maximum: 2});
+
+  def("rerandom", (expr=undefined) => {
+    const seed = (expr !== undefined) ? aexpr(expr) : 2345678901;
+    return this.prng.seed(seed);
+  }, {maximum: 1});
+
+  // 4.4 Print Formatting
+
+  def("form", (num, width, precision) => {
+    num = aexpr(num);
+    width = aexpr(width);
+    precision = aexpr(precision);
+
+    return num.toFixed(precision).padStart(width);
+  });
+
+  // 4.5 Bitwise Operations
+
+
+  def("bitand", (...args) => args.map(aexpr).reduce((a, b) => a & b, -1),
+      {minimum: 0, default: 2, maximum: -1});
+  def("bitor", (...args) => args.map(aexpr).reduce((a, b) => a | b, 0),
+      {minimum: 0, default: 2, maximum: -1});
+  def("bitxor", (...args) => args.map(aexpr).reduce((a, b) => a ^ b, 0),
+      {minimum: 0, default: 2, maximum: -1});
+  def("bitnot", num => ~aexpr(num));
+
+
+  def("ashift", (num1, num2) => {
+    num1 = truncate(aexpr(num1));
+    num2 = truncate(aexpr(num2));
+    return num2 >= 0 ? num1 << num2 : num1 >> -num2;
+  });
+
+  def("lshift", (num1, num2) => {
+    num1 = truncate(aexpr(num1));
+    num2 = truncate(aexpr(num2));
+    return num2 >= 0 ? num1 << num2 : num1 >>> -num2;
+  });
+
+
+  //----------------------------------------------------------------------
+  //
+  // 5. Logical Operations
+  //
+  //----------------------------------------------------------------------
+
+  def("true", () => 1);
+  def("false", () => 0);
+
+  def("and", (...args) => booleanReduce(args, value => value, 1),
+      {noeval: true, minimum: 0, default: 2, maximum: -1});
+
+  def("or", (...args) => booleanReduce(args, value => !value, 0),
+      {noeval: true, minimum: 0, default: 2, maximum: -1});
+
+  async function booleanReduce(args, test, value) {
+    while (args.length) {
+      const result = bexpr(await args.shift()());
+      if (!test(result))
+        return result ? 1 : 0;
+      value = result;
+    }
+    return value ? 1 : 0;
+  }
+
+  def("xor", (...args) => args.map(bexpr).reduce((a, b) => a !== b, false) ? 1 : 0,
+      {minimum: 0, default: 2, maximum: -1});
+
+  def("not", a => !bexpr(a) ? 1 : 0);
+
+  //----------------------------------------------------------------------
+  //
+  // 6. Graphics
+  //
+  //----------------------------------------------------------------------
+  // 6.1 Turtle Motion
+
+  def(["forward", "fd"], a => turtle.move(aexpr(a)));
+  def(["back", "bk"], a => turtle.move(-aexpr(a)));
+  def(["left", "lt"], a => turtle.turn(-aexpr(a)));
+  def(["right", "rt"], a => turtle.turn(aexpr(a)));
+
+  // Left arrow:
+  def(["\u2190"], () => turtle.turn(-15));
+  // Right arrow:
+  def(["\u2192"], () => turtle.turn(15));
+  // Up arrow:
+  def(["\u2191"], () => turtle.move(10));
+  // Down arrow:
+  def(["\u2193"], () => turtle.move(-10));
+
+
+  def("setpos", l => {
+    l = lexpr(l);
+    if (l.length !== 2) throw err("{_PROC_}: Expected list of length 2", ERRORS.BAD_INPUT);
+    turtle.position = [aexpr(l[0]), aexpr(l[1])];
+  });
+  def("setxy", (x, y) => { turtle.position = [aexpr(x), aexpr(y)]; });
+  def("setx", x => { turtle.position = [aexpr(x), undefined]; });
+  def("sety", y => { turtle.position = [undefined, aexpr(y)]; });
+  def(["setheading", "seth"], a => { turtle.heading = aexpr(a); });
+
+  def("home", () => turtle.home());
+
+  def("arc", (angle, radius) => turtle.arc(aexpr(angle), aexpr(radius)));
+
+  //
+  // 6.2 Turtle Motion Queries
+  //
+
+  def("pos", () => turtle.position);
+  def("xcor", () => turtle.position[0]);
+  def("ycor", () => turtle.position[1]);
+  def("heading", () => turtle.heading);
+  def("towards", l => {
+    l = lexpr(l);
+    if (l.length !== 2) throw err("{_PROC_}: Expected list of length 2", ERRORS.BAD_INPUT);
+    return turtle.towards(aexpr(l[0]), aexpr(l[1]));
+  });
+
+  def("scrunch", () => turtle.scrunch);
+  def("bounds", () => turtle.bounds);
+
+  //
+  // 6.3 Turtle and Window Control
+  //
+
+  def(["showturtle", "st"], () => { turtle.visible = true; });
+  def(["hideturtle", "ht"], () => { turtle.visible = false; });
+  def("clean", () => { turtle.clear(); });
+  def(["clearscreen", "cs"], () => { turtle.clearscreen(); });
+
+  def("wrap", () => { turtle.turtlemode = 'wrap'; });
+  def("window", () => { turtle.turtlemode = 'window'; });
+  def("fence", () => { turtle.turtlemode = 'fence'; });
+
+  def("fill", () => { turtle.fill(); });
+
+  def("filled", async (fillcolor, statements) => {
+    fillcolor = parseColor(fillcolor);
+    turtle.beginpath();
+    try {
+      await runNoResult(statements);
+    } finally {
+      turtle.fillpath(fillcolor);
+    }
+  });
+
+  def("label", (...args) => {
+    const s = args.map(stringify_nodecorate).join(" ");
+    return turtle.drawtext(s);
+  }, {minimum: 1, default: 1, maximum: -1});
+
+  def("setlabelheight", a => { turtle.fontsize = aexpr(a); });
+
+  def("setlabelfont", a => { turtle.fontname = sexpr(a); });
+
+  // Not Supported: textscreen
+  // Not Supported: fullscreen
+  // Not Supported: splitscreen
+
+  def("setscrunch", (sx, sy) => {
+    sx = aexpr(sx);
+    sy = aexpr(sy);
+    if (!isFinite(sx) || sx === 0 || !isFinite(sy) || sy === 0)
+      throw err("{_PROC_}: Expected non-zero values", ERRORS.BAD_INPUT);
+    turtle.scrunch = [sx, sy];
+  });
+
+  // Not Supported: refresh
+  // Not Supported: norefresh
+
+  def("setturtle", (index) => {
+    index = aexpr(index)|0;
+    if (index < 1)
+      throw err("{_PROC_}: Expected positive turtle index", ERRORS.BAD_INPUT);
+    turtle.currentturtle = index - 1;
+  });
+
+  def("ask", async (index, statements) => {
+    index = aexpr(index)|0;
+    if (index < 1)
+      throw err("{_PROC_}: Expected positive turtle index", ERRORS.BAD_INPUT);
+    const originalturtle = turtle.currentturtle;
+    turtle.currentturtle = index - 1;
+    try {
+      await runNoResult(statements);
+    } finally {
+      turtle.currentturtle = originalturtle;
+    }
+  });
+
+  def("clearturtles", () => {
+    turtle.clearturtles();
+  });
+
+  //
+  // 6.4 Turtle and Window Queries
+  //
+
+  def(["shownp", "shown?"], () => turtle.visible ? 1 : 0);
+
+  // Not Supported: screenmode
+
+  def("turtlemode", () => turtle.turtlemode.toUpperCase());
+
+  def("labelsize", () => [turtle.fontsize, turtle.fontsize]);
+
+  def("labelfont", () => turtle.fontname);
+
+  def("turtles", () => turtle.turtles);
+
+  def("turtle", () => turtle.currentturtle + 1);
+
+  //
+  // 6.5 Pen and Background Control
+  //
+  def(["pendown", "pd"], () => { turtle.pendown = true; });
+  def(["penup", "pu"], () => { turtle.pendown = false; });
+
+  def(["penpaint", "ppt"], () => { turtle.penmode = 'paint'; });
+  def(["penerase", "pe"], () => { turtle.penmode = 'erase'; });
+  def(["penreverse", "px"], () => { turtle.penmode = 'reverse'; });
+
+  // To handle additional color names (localizations, etc):
+  // logo.colorAlias = (name) => {
+  //   return {internationalorange: '#FF4F00', ... }[name];
+  // };
+  this.colorAlias = null;
+
+  const PALETTE = {
+    // Turtle Room modification: BBC Mode 2 palette, 30 September 2026.
+    0: "black", 1: "red", 2: "lime", 3: "yellow",
+    4: "blue", 5: "magenta", 6: "cyan", 7: "white",
+    8: "brown", 9: "tan", 10: "green", 11: "aquamarine",
+    12: "salmon", 13: "purple", 14: "orange", 15: "gray"
+  };
+
+  function parseColor(color) {
+    function adjust(n) {
+      // Clamp into 0...99
+      n = Math.min(99, Math.max(0, Math.floor(n)));
+      // Scale to 0...255
+      return Math.floor(n * 255 / 99);
+    }
+    if (Type(color) === 'list') {
+      const r = adjust(aexpr(color[0]));
+      const g = adjust(aexpr(color[1]));
+      const b = adjust(aexpr(color[2]));
+      const rr = (r < 16 ? "0" : "") + r.toString(16);
+      const gg = (g < 16 ? "0" : "") + g.toString(16);
+      const bb = (b < 16 ? "0" : "") + b.toString(16);
+      return '#' + rr + gg + bb;
+    }
+    color = sexpr(color);
+    if (Object.prototype.hasOwnProperty.call(PALETTE, color))
+      return PALETTE[color];
+    if (self.colorAlias)
+      return self.colorAlias(color) || color;
+    return color;
+  }
+
+  def(["setpencolor", "setpc", "setcolor"], (color) => {
+    turtle.color = parseColor(color);
+  });
+
+  def("setpalette", (colornumber, color) => {
+    colornumber = aexpr(colornumber);
+    if (colornumber < 8)
+      throw err("{_PROC_}: Expected number greater than 8", ERRORS.BAD_INPUT);
+    PALETTE[colornumber] = parseColor(color);
+  });
+
+  def(["setpensize", "setwidth", "setpw"], a => {
+    if (Type(a) === 'list')
+      turtle.penwidth = aexpr(a[0]);
+    else
+      turtle.penwidth = aexpr(a);
+  });
+
+  // Not Supported: setpenpattern
+  // Not Supported: setpen
+
+  def(["setbackground", "setbg", "setscreencolor", "setsc"], color => {
+    turtle.bgcolor = parseColor(color);
+  });
+
+  //
+  // 6.6 Pen Queries
+  //
+
+  def(["pendownp", "pendown?"], () => turtle.pendown ? 1 : 0);
+
+  def("penmode", () => turtle.penmode.toUpperCase());
+
+  def(["pencolor", "pc"], () => turtle.color);
+
+  def("palette", colornumber => PALETTE[aexpr(colornumber)]);
+
+  def("pensize", () => [turtle.penwidth, turtle.penwidth]);
+
+  // Not Supported: pen
+
+  def(["background", "bg", "getscreencolor", "getsc"], () => turtle.bgcolor);
+
+  // 6.7 Saving and Loading Pictures
+
+  // Not Supported: savepict
+  // Not Supported: loadpict
+  // Not Supported: epspict
+
+  // 6.8 Mouse Queries
+
+  def("mousepos", () => turtle.mousepos);
+
+  def("clickpos", () => turtle.clickpos);
+
+  def(["buttonp", "button?"], () => turtle.button > 0 ? 1 : 0);
+
+  def("button", () => turtle.button);
+
+  def("touches", () => turtle.touches);
+
+  // Extensions
+
+  def("bitcut", (w, h) => turtle.copy(w, h));
+
+  def("bitpaste", () => turtle.paste());
+
+  //----------------------------------------------------------------------
+  //
+  // 7. Workspace Management
+  //
+  //----------------------------------------------------------------------
+  // 7.1 Procedure Definition
+
+  def("define", (name, list) => {
+    name = sexpr(name);
+    list = lexpr(list);
+    if (list.length != 2)
+      throw err("{_PROC_}: Expected list of length 2", ERRORS.BAD_INPUT);
+
+    defineAndSaveProc(name, ...parseDefineList(list));
+  });
+
+  function parseDefineList(list) {
+    const inputs = [];
+    const optional_inputs = [];
+    let rest = undefined;
+    let def = undefined;
+    const block = reparse(lexpr(list[1]));
+
+    const ins = lexpr(list[0]);
+    const REQUIRED = 0, OPTIONAL = 1, REST = 2, DEFAULT = 3, ERROR = 4;
+    let state = REQUIRED;
+    while (ins.length) {
+      const atom = ins.shift();
+      if (state === REQUIRED) {
+        if (Type(atom) === 'word') {
+          inputs.push(atom);
+          continue;
+        }
+        state = OPTIONAL;
+      }
+
+      if (state === OPTIONAL) {
+        if (Type(atom) === 'list' && atom.length > 1 && Type(atom[0]) === 'word') {
+          optional_inputs.push([atom.shift(), atom]);
+          continue;
+        }
+        state = REST;
+      }
+
+      if (state === REST) {
+        state = DEFAULT;
+        if (Type(atom) === 'list' && atom.length === 1 && Type(atom[0]) === 'word') {
+          rest = atom[0];
+          continue;
+        }
+      }
+
+      if (state === DEFAULT) {
+        state = ERROR;
+        if (Type(atom) === 'word' && isNumber(atom)) {
+          def = parseFloat(atom);
+          continue;
+        }
+      }
+
+      throw err("{_PROC_}: Unexpected inputs", ERRORS.BAD_INPUT);
+    }
+
+    return [inputs, optional_inputs, rest, def, block];
+  }
+
+  def("text", name => {
+    const proc = this.routines.get(sexpr(name));
+    if (!proc)
+      throw err("{_PROC_}: Don't know how to {name:U}", { name: name }, ERRORS.BAD_PROC);
+    if (!proc.inputs) {
+      throw err("{_PROC_}: Can't show definition of primitive {name:U}", { name: name },
+               ERRORS.IS_PRIMITIVE);
+    }
+
+    const inputs = proc.inputs.concat(proc.optional_inputs);
+    if (proc.rest)
+      inputs.push([proc.rest]);
+    if (proc.def !== undefined)
+      inputs.push(proc.def);
+    return [inputs, proc.block];
+  });
+
+  // Not Supported: fulltext
+
+  def("copydef", (newname, oldname) => {
+
+    newname = sexpr(newname);
+    oldname = sexpr(oldname);
+
+    if (!this.routines.has(oldname)) {
+      throw err("{_PROC_}: Don't know how to {name:U}", { name: oldname }, ERRORS.BAD_PROC);
+    }
+
+    if (this.routines.has(newname)) {
+      if (this.routines.get(newname).special) {
+        throw err("{_PROC_}: Can't overwrite special {name:U}", { name: newname },
+                  ERRORS.BAD_INPUT);
+      }
+      if (this.routines.get(newname).primitive && !maybegetvar("redefp")) {
+        throw err("{_PROC_}: Can't overwrite primitives unless REDEFP is TRUE",
+                 ERRORS.BAD_INPUT);
+      }
+    }
+
+    this.routines.set(newname, this.routines.get(oldname));
+    // TODO: This is broken if copying a built-in, so disable for now
+    //saveproc(newname, this.definition(newname, this.routines.get(newname)));
+  });
+
+
+  // 7.2 Variable Definition
+
+  def("make", (varname, value) => {
+    setvar(sexpr(varname), value);
+  });
+
+  def("name", (value, varname) => {
+    setvar(sexpr(varname), value);
+  });
+
+  def("local", (...varnames) => {
+    varnames.forEach((name) => { local(sexpr(name)); });
+  }, {minimum: 1, default: 1, maximum: -1});
+
+  def("localmake", (varname, value) => {
+    setlocal(sexpr(varname), value);
+  });
+
+  def("thing", varname => getvar(sexpr(varname)));
+
+  def("global", (...varnames) => {
+    const globalscope = this.scopes[0];
+    varnames.forEach((name) => {
+      globalscope.set(sexpr(name), {value: undefined}); });
+  }, {minimum: 1, default: 1, maximum: -1});
+
+  //
+  // 7.3 Property Lists
+  //
+
+  def("pprop", (plistname, propname, value) => {
+    plistname = sexpr(plistname);
+    propname = sexpr(propname);
+    let plist = this.plists.get(plistname);
+    if (!plist) {
+      plist = new StringMap(true);
+      this.plists.set(plistname, plist);
+    }
+    plist.set(propname, value);
+  });
+
+  def("gprop", (plistname, propname) => {
+    plistname = sexpr(plistname);
+    propname = sexpr(propname);
+    const plist = this.plists.get(plistname);
+    if (!plist || !plist.has(propname))
+      return [];
+    return plist.get(propname);
+  });
+
+  def("remprop", (plistname, propname) => {
+    plistname = sexpr(plistname);
+    propname = sexpr(propname);
+    const plist = this.plists.get(plistname);
+    if (plist) {
+      plist.delete(propname);
+      if (plist.empty()) {
+        // TODO: Do this? Loses state, e.g. unburies if buried
+        this.plists.delete(plistname);
+      }
+    }
+  });
+
+  def("plist", plistname => {
+    plistname = sexpr(plistname);
+    const plist = this.plists.get(plistname);
+    if (!plist)
+      return [];
+
+    const result = [];
+    plist.forEach((key, value) => {
+      result.push(key);
+      result.push(copy(value));
+    });
+    return result;
+  });
+
+  //
+  // 7.4 Workspace Predicates
+  //
+
+  def(["procedurep", "procedure?"], name => {
+    name = sexpr(name);
+    return this.routines.has(name) ? 1 : 0;
+  });
+
+  def(["primitivep", "primitive?"], name => {
+    name = sexpr(name);
+    return (this.routines.has(name) &&
+            this.routines.get(name).primitive) ? 1 : 0;
+  });
+
+  def(["definedp", "defined?"], name => {
+    name = sexpr(name);
+    return (this.routines.has(name) &&
+            !this.routines.get(name).primitive) ? 1 : 0;
+  });
+
+  def(["namep", "name?"], varname => {
+    try {
+      return getvar(sexpr(varname)) !== undefined ? 1 : 0;
+    } catch (e) {
+      return 0;
+    }
+  });
+
+  def(["plistp", "plist?"], plistname => {
+    plistname = sexpr(plistname);
+    return this.plists.has(plistname) ? 1 : 0;
+  });
+
+  //
+  // 7.5 Workspace Queries
+  //
+
+  def("contents", () => [
+      this.routines.keys().filter(x => {
+        return !this.routines.get(x).primitive && !this.routines.get(x).buried;
+      }),
+      this.scopes.reduce(
+        (list, scope) => {
+          return list.concat(scope.keys().filter(x => !scope.get(x).buried)); },
+        []),
+      this.plists.keys().filter(x => {
+        return !this.plists.get(x).buried;
+      })
+    ]
+  );
+
+  def("buried", () => [
+      this.routines.keys().filter(x => {
+        return !this.routines.get(x).primitive && this.routines.get(x).buried; }),
+      this.scopes.reduce(
+        (list, scope) => {
+          return list.concat(scope.keys().filter(x => scope.get(x).buried)); },
+        []),
+      this.plists.keys().filter(x => this.plists.get(x).buried)
+    ]
+  );
+
+  def("traced", () => [
+      this.routines.keys().filter(x => {
+        return !this.routines.get(x).primitive && this.routines.get(x).traced; }),
+      this.scopes.reduce(
+        (list, scope) => {
+          return list.concat(scope.keys().filter(x => scope.get(x).traced)); },
+        []),
+      this.plists.keys().filter(x => this.plists.get(x).traced)
+    ]
+  );
+
+  def(["stepped"], () => [
+      this.routines.keys().filter(x => {
+        return !this.routines.get(x).primitive && this.routines.get(x).stepped; }),
+      this.scopes.reduce(
+        (list, scope) => {
+          return list.concat(scope.keys().filter(x => scope.get(x).stepped)); },
+        []),
+      this.plists.keys().filter(x => this.plists.get(x).stepped)
+    ]
+  );
+
+  def("procedures", () => this.routines.keys().filter(
+    x => !this.routines.get(x).primitive && !this.routines.get(x).buried
+  ));
+
+  def("primitives", () => this.routines.keys().filter(
+    x => this.routines.get(x).primitive & !this.routines.get(x).buried
+  ));
+
+  def("globals", () => {
+    const globalscope = this.scopes[0];
+    return globalscope.keys().filter(x => !globalscope.get(x).buried);
+  });
+
+  def("names", () => [
+      [],
+      this.scopes.reduce((list, scope) => {
+        return list.concat(scope.keys().filter(x => {
+          return !scope.get(x).buried; })); }, [])
+    ]
+  );
+
+  def("plists", () => [
+      [],
+      [],
+      this.plists.keys().filter(x => {
+        return !this.plists.get(x).buried;
+      })
+    ]
+  );
+
+  def("namelist", varname => {
+    if (Type(varname) === 'list')
+      varname = lexpr(varname);
+    else
+      varname = [sexpr(varname)];
+    return [[], varname];
+  });
+
+  def("pllist", plname => {
+    if (Type(plname) === 'list') {
+      plname = lexpr(plname);
+    } else {
+      plname = [sexpr(plname)];
+    }
+    return [[], [], plname];
+  });
+
+
+  def("arity", name => {
+    name = sexpr(name);
+    const proc = this.routines.get(name);
+    if (!proc)
+      throw err("{_PROC_}: Don't know how to {name:U}", { name: name }, ERRORS.BAD_PROC);
+    if (proc.special)
+      return [-1, -1, -1];
+
+    return [
+      proc.minimum,
+      proc.default,
+      proc.maximum
+    ];
+  });
+
+  // Not Supported: nodes
+
+  // 7.6 Workspace Inspection
+
+  //
+  // 7.7 Workspace Control
+  //
+
+  function contentslist(list) {
+    if (list !== undefined && Type(list) === 'word')
+      return [[list], [], []];
+    if (list !== undefined && Type(list) === 'list' && list.length && Type(list[0]) === 'word')
+      return [lexpr(list), [], []];
+    list = lexpr(list);
+    while (list && list.length < 3)
+      list.push([]);
+    return [lexpr(list[0]), lexpr(list[1]), lexpr(list[2])];
+  }
+
+  def("erase", list => {
+    const [procs, vars, plists] = contentslist(list);
+
+    // Delete procedures
+    procs.forEach(name => {
+      name = sexpr(name);
+      if (this.routines.has(name)) {
+        if (this.routines.get(name).special)
+          throw err("Can't {_PROC_} special {name:U}", { name: name }, ERRORS.BAD_INPUT);
+        if (!this.routines.get(name).primitive || maybegetvar("redefp")) {
+          this.routines.delete(name);
+          saveproc(name);
+        } else {
+          throw err("Can't {_PROC_} primitives unless REDEFP is TRUE", ERRORS.BAD_INPUT);
+        }
+      }
+    });
+
+    // Delete variables
+    // TODO: global only?
+    this.scopes.forEach(scope => {
+      vars.forEach(name => {
+        name = sexpr(name);
+        scope.delete(name);
+      });
+    });
+
+    // Delete property lists
+    plists.forEach(name => {
+      name = sexpr(name);
+      this.plists.delete(name);
+    });
+  });
+
+  // TODO: lots of redundant logic here -- clean this up
+  def("erall", () => {
+    this.routines.keys()
+      .filter(x => !this.routines.get(x).primitive && !this.routines.get(x).buried)
+      .forEach(name => {
+        this.routines.delete(name);
+        saveproc(name);
+      });
+
+    this.scopes.forEach(scope => {
+      scope.keys()
+        .filter(x => !scope.get(x).buried)
+        .forEach(name => {
+          scope.delete(name);
+        });
+    });
+
+    this.plists.keys()
+      .filter(x => !this.plists.get(x).buried)
+      .forEach(name => {
+        this.plists.delete(name);
+      });
+  });
+
+  def("erps", () => {
+    this.routines.keys()
+      .filter(x => !this.routines.get(x).primitive && !this.routines.get(x).buried)
+      .forEach(name => {
+        this.routines.delete(name);
+        saveproc(name);
+      });
+  });
+
+  def("erns", () => {
+    this.scopes.forEach(scope => {
+      scope.keys()
+        .filter(x => !scope.get(x).buried)
+        .forEach(name => {
+          scope.delete(name);
+        });
+    });
+  });
+
+  def("erpls", () => {
+    this.plists.keys()
+      .filter(x => !this.plists.get(x).buried)
+      .forEach(key => {
+        this.plists.delete(key);
+      });
+  });
+
+  def("ern", varname => {
+    let varnamelist;
+    if (Type(varname) === 'list')
+      varnamelist = lexpr(varname);
+    else
+      varnamelist = [sexpr(varname)];
+
+    this.scopes.forEach(scope => {
+      varnamelist.forEach(name => {
+        name = sexpr(name);
+        scope.delete(name);
+      });
+    });
+  });
+
+  def("erpl", plname => {
+    let plnamelist;
+    if (Type(plname) === 'list') {
+      plnamelist = lexpr(plname);
+    } else {
+      plnamelist = [sexpr(plname)];
+    }
+
+    plnamelist.forEach(name => {
+      name = sexpr(name);
+      this.plists.delete(name);
+    });
+  });
+
+  def("bury", list => {
+    const [procs, vars, plists] = contentslist(list);
+
+    // Bury procedures
+    procs.forEach(name => {
+      name = sexpr(name);
+      if (this.routines.has(name))
+        this.routines.get(name).buried = true;
+    });
+
+    // Bury variables
+    // TODO: global only?
+    this.scopes.forEach(scope => {
+      vars.forEach(name => {
+        name = sexpr(name);
+        if (scope.has(name))
+          scope.get(name).buried = true;
+      });
+    });
+
+    // Bury property lists
+    plists.forEach(name => {
+      name = sexpr(name);
+      if (this.plists.has(name))
+        this.plists.get(name).buried = true;
+    });
+  });
+
+  def("buryall", () => {
+    this.routines.forEach((name, proc) => {
+      proc.buried = true;
+    });
+
+    this.scopes.forEach(scope => {
+      scope.forEach((name, entry) => {
+        entry.buried = true;
+      });
+    });
+
+    this.plists.forEach((name, entry) => {
+      entry.buried = true;
+    });
+  });
+
+  def("buryname", varname => {
+    const bury = this.routines.get('bury');
+    const namelist = this.routines.get('namelist');
+    return bury.call(this, namelist.call(this, varname));
+  });
+
+  def("unbury", list => {
+    const [procs, vars, plists] = contentslist(list);
+
+    // Procedures
+    procs.forEach(name => {
+      name = sexpr(name);
+      if (this.routines.has(name))
+        this.routines.get(name).buried = false;
+    });
+
+    // Variables
+    // TODO: global only?
+    this.scopes.forEach(scope => {
+      vars.forEach(name => {
+        name = sexpr(name);
+        if (scope.has(name))
+          scope.get(name).buried = false;
+      });
+    });
+
+    // Property lists
+    plists.forEach(name => {
+      name = sexpr(name);
+      if (this.plists.has(name))
+        this.plists.get(name).buried = false;
+    });
+  });
+
+  def("unburyall", () => {
+    this.routines.forEach((name, proc) => {
+      proc.buried = false;
+    });
+
+    this.scopes.forEach(scope => {
+      scope.forEach((name, entry) => {
+        entry.buried = false;
+      });
+    });
+
+    this.plists.forEach((name, entry) => {
+      entry.buried = false;
+    });
+  });
+
+  def("unburyname", (varname) => {
+    const unbury = this.routines.get('unbury');
+    const namelist = this.routines.get('namelist');
+    return unbury.call(this, namelist.call(this, varname));
+  });
+
+  def(["buriedp", "buried?"], list => {
+    const [procs, vars, plists] = contentslist(list);
+
+    // Procedures
+    if (procs.length) {
+      const name = sexpr(procs[0]);
+      return (this.routines.has(name) && this.routines.get(name).buried) ? 1 : 0;
+    }
+
+    // Variables
+    if (vars.length) {
+      const name = sexpr(vars[0]);
+      // TODO: global only?
+      return (this.scopes[0].has(name) && this.scopes[0].get(name).buried) ? 1 : 0;
+    }
+
+    // Property lists
+    if (plists.length) {
+      const name = sexpr(plists[0]);
+      return (this.plists.has(name) && this.plists.get(name).buried) ? 1 : 0;
+    }
+
+    return 0;
+  });
+
+  //----------------------------------------------------------------------
+  //
+  // 8. Control Structures
+  //
+  //----------------------------------------------------------------------
+
+  //
+  // 8.1 Control
+  //
+
+  function run(statements) {
+    return self.execute(reparse(statements), {returnResult: true});
+  }
+
+  function runNoResult(statements) {
+    return self.execute(reparse(statements));
+  }
+
+  def("run", statements => {
+    return run(statements);
+  });
+
+  def("runresult", async statements => {
+    const result = await run(statements);
+    if (result !== undefined)
+      return [result];
+    else
+      return [];
+  });
+
+  def("repeat", async (count, statements) => {
+    count = aexpr(count);
+    const old_repcount = this.repcount;
+    let i = 1;
+    try {
+      while (i <= count) {
+        this.repcount = i++;
+        await runNoResult(statements);
+        await yieldIfNeeded();
+      }
+    } finally {
+      this.repcount = old_repcount;
+    }
+  });
+
+  def("forever", async statements => {
+    const old_repcount = this.repcount;
+    let i = 1;
+    try {
+      for (;;) {
+        this.repcount = i++;
+        await runNoResult(statements);
+        await yieldIfNeeded();
+      }
+    } finally {
+      this.repcount = old_repcount;
+    }
+  });
+
+  const TEMPLATE_ITERCOUNT_NAME = 'template.itercount';
+  const TEMPLATE_LISTS_NAME = 'template.lists';
+
+  def(["repcount"], () => this.repcount);
+  def(["#"], () => maybegetvar(TEMPLATE_ITERCOUNT_NAME) ?? this.repcount);
+
+  def("if", async (tf, statements, statements2=undefined) => {
+    if (Type(tf) === 'list')
+      tf = evaluateExpression(reparse(tf));
+
+    tf = bexpr(await tf);
+    if (!statements2) {
+      return tf ? run(statements) : undefined;
+    } else {
+      return run(tf ? statements : statements2);
+    }
+  }, {maximum: 3});
+
+  def("ifelse", async (tf, statements1, statements2) => {
+    if (Type(tf) === 'list')
+      tf = evaluateExpression(reparse(tf));
+
+    tf = bexpr(await tf);
+
+    return run(tf ? statements1 : statements2);
+  });
+
+  def("test", async tf => {
+    if (Type(tf) === 'list')
+      tf = evaluateExpression(reparse(tf));
+
+    tf = bexpr(await tf);
+    // NOTE: A property on the scope, not within the scope
+    this.scopes.at(-1)._test = tf;
+  });
+
+  def(["iftrue", "ift"], statements => {
+    const tf = this.scopes.at(-1)._test;
+    if (tf === undefined)
+      throw err('{_PROC_}: Called without TEST', ERRORS.NO_TEST);
+    return tf ? run(statements) : undefined;
+  });
+
+  def(["iffalse", "iff"], statements => {
+    const tf = this.scopes.at(-1)._test;
+    if (tf === undefined)
+      throw err('{_PROC_}: Called without TEST', ERRORS.NO_TEST);
+    return !tf ? run(statements) : undefined;
+  });
+
+  def("stop", () => {
+    throw new Output();
+  });
+
+  def(["output", "op"], atom => {
+    throw new Output(atom);
+  });
+
+  this.last_error = undefined;
+
+  def("catch", async (tag, instructionlist) => {
+    tag = sexpr(tag).toUpperCase();
+    try {
+      return await run(instructionlist);
+    } catch(error) {
+      if (!(error instanceof LogoError) || error.tag !== tag)
+        throw error;
+      this.last_error = error;
+      return error.value;
+    }
+  }, {maximum: 2});
+
+  def("throw", (tag, value=undefined) => {
+    tag = sexpr(tag).toUpperCase();
+    const error = new LogoError(tag, value);
+    error.code = (value !== undefined) ? ERRORS.USER_GENERATED : ERRORS.THROW_ERROR;
+    throw error;
+  }, {maximum: 2});
+
+  def("error", () => {
+    if (!this.last_error)
+      return [];
+
+    const list = [
+      this.last_error.code,
+      this.last_error.message,
+      this.last_error.proc,
+      this.last_error.line
+    ];
+    this.last_error = undefined;
+    return list;
+  });
+
+  // Not Supported: pause
+  // Not Supported: continue
+
+  def("wait", time => {
+    return yieldForMS(Math.ceil(aexpr(time) / 60 * 1000));
+  });
+
+  def("bye", () => {
+    throw new Bye;
+  });
+
+  def(".maybeoutput", value => {
+    throw new Output(value);
+  });
+
+  // Not Supported: goto
+  // Not Supported: tag
+
+  def("ignore", value => {
+  });
+
+  def("`", async list => {
+    list = lexpr(list);
+    let out = [];
+    while (list.length) {
+      let member = list.shift();
+
+      // TODO: Nested backquotes: "Substitution is done only for
+      // commas at the same depth as the backquote in which they are
+      // found."
+      if (member === ',' && list.length) {
+        out.push(await run(list.shift()));
+      } else if (member === ',@' && list.length) {
+        out = out.concat(await run(list.shift()));
+      } else if (Type(member) === 'word' && /^,@.+/.test(member)) {
+        out = out.concat(await run(member.substring(2)));
+      } else if (Type(member) === 'word' && /^,.+/.test(member)) {
+        out.push(await run(member.substring(1)));
+      } else if (Type(member) === 'word' && /^",/.test(member)) {
+        const result = await run(member.substring(2));
+        out.push('"' + (Type(result) === 'list' ? result[0] : result));
+      } else if (Type(member) === 'word' && /^:,/.test(member)) {
+        const result = await run(member.substring(2));
+        out.push(':' + (Type(result) === 'list' ? result[0] : result));
+      } else {
+        out.push(member);
+      }
+    }
+    return out;
+  });
+
+  def("for", async (control, statements) => {
+    control = lexpr(control);
+
+    function sign(x) { return x < 0 ? -1 : x > 0 ? 1 : 0; }
+
+    const varname = sexpr(control[0]);
+
+    let start = await evaluateExpression(reparse(control[1]));
+    let current = start;
+
+    let limit = await evaluateExpression(reparse(control[2]));
+
+    let step = control.length === 4 ? await evaluateExpression(reparse(control[3]))
+        : (limit < start ? -1 : 1);
+
+    while (sign(current - limit) !== sign(step)) {
+      setlocal(varname, current);
+      await runNoResult(statements);
+      current += step;
+      await yieldIfNeeded();
+    }
+  });
+
+  def("dotimes", async (control, statements) => {
+    control = reparse(lexpr(control));
+
+    const varname = sexpr(control.shift());
+    const times = aexpr(await evaluateExpression(control));
+    for (let current = 1; current <= times; ++current) {
+      setlocal(varname, current);
+      await runNoResult(statements);
+      await yieldIfNeeded();
+    }
+  });
+
+  function checkevalblock(block) {
+    block = block();
+    if (Type(block) === 'list') { return block; }
+    throw err("{_PROC_}: Expected block", ERRORS.BAD_INPUT);
+  }
+
+  def("do.while", async (block, tfexpression) => {
+    block = checkevalblock(block);
+    for (;;) {
+      await runNoResult(block);
+      let tf = await tfexpression();
+      if (Type(tf) === 'list')
+        tf = await evaluateExpression(reparse(tf));
+      if (!tf)
+        break;
+      await yieldIfNeeded();
+    }
+  }, {noeval: true});
+
+  def("while", async (tfexpression, block) => {
+    block = checkevalblock(block);
+    for (;;) {
+      let tf = await tfexpression();
+      if (Type(tf) === 'list')
+        tf = await evaluateExpression(reparse(tf));
+      if (!tf)
+        break;
+      await runNoResult(block);
+      await yieldIfNeeded();
+    }
+  }, {noeval: true});
+
+  def("do.until", async (block, tfexpression) => {
+    block = checkevalblock(block);
+    for (;;) {
+      await runNoResult(block);
+      let tf = await tfexpression();
+      if (Type(tf) === 'list')
+        tf = await evaluateExpression(reparse(tf));
+      if (tf)
+        break;
+      await yieldIfNeeded();
+    }
+  }, {noeval: true});
+
+  def("until", async (tfexpression, block) => {
+    block = checkevalblock(block);
+    for (;;) {
+      let tf = await tfexpression();
+      if (Type(tf) === 'list')
+        tf = await evaluateExpression(reparse(tf));
+      if (tf)
+        break;
+      await runNoResult(block);
+      await yieldIfNeeded();
+    }
+  }, {noeval: true});
+
+  def("case", (value, clauses) => {
+    clauses = lexpr(clauses);
+
+    for (let i = 0; i < clauses.length; ++i) {
+      const clause = lexpr(clauses[i]);
+      const first = clause.shift();
+      if (isKeyword(first, 'ELSE'))
+        return evaluateExpression(reparse(clause));
+      if (lexpr(first).some(x => equal(x, value)))
+        return evaluateExpression(reparse(clause));
+    }
+    return undefined;
+  });
+
+  def("cond", async clauses => {
+    clauses = lexpr(clauses);
+    while (clauses.length) {
+      const clause = lexpr(clauses.shift());
+      const first = clause.shift();
+      if (isKeyword(first, 'ELSE'))
+        return await evaluateExpression(reparse(clause));
+      const result = await evaluateExpression(reparse(lexpr(first)));
+      if (result)
+        return await evaluateExpression(reparse(clause));
+    }
+    return undefined;
+  });
+
+  //
+  // 8.2 Template-based Iteration
+  //
+
+  function processTemplate(template, options = {}) {
+    if (Type(template) === 'list') {
+      if (template.length >= 2 && Type(template[0]) === 'list' && Type(template[1]) === 'list') {
+        // 'procedure text' form
+        return defineProc(undefined, ...parseDefineList(template));
+      } else if (template.length > 1 && Type(template[0]) === 'list') {
+        // 'named-slot' a.k.a. 'lambda' form
+        const vars = template.shift();
+        return async function(...args) {
+          vars.forEach((name, index) => { setlocal(name, args[index]); });
+          return await (options.returnResult ? run(template) : runNoResult(template));
+        };
+      } else {
+        // 'explicit-slot' form
+        return async function(...args) {
+          self.slots = (name) => args[name === '' ? 0 : name - 1];
+          try {
+            return await (options.returnResult ? run(template) : runNoResult(template));
+          } finally {
+            self.slots = undefined;
+          }
+        };
+      }
+    } else {
+      // 'named-procedure' form
+      const procname = sexpr(template);
+      const routine = self.routines.get(procname);
+      if (!routine)
+        throw err("{_PROC_}: Don't know how to {name:U}", { name: procname }, ERRORS.BAD_PROC);
+      if (routine.special || routine.noeval)
+        throw err("Can't apply {_PROC_} to special {name:U}", { name: procname }, ERRORS.BAD_INPUT);
+      return routine;
+    }
+  }
+
+
+  //
+  // Higher order functions
+  //
+
+  def("apply", (template, list) => {
+    const routine = processTemplate(template, {returnResult: true});
+    return routine.apply(this, lexpr(list));
+  });
+
+  def("invoke", (template, ...args) => {
+    const routine = processTemplate(template, {returnResult: true});
+    return routine.apply(this, args);
+  }, {minimum: 1, default: 2, maximum: -1});
+
+
+  def("foreach", async (list, template) => {
+    const routine = processTemplate(template);
+    list = lexpr(list);
+
+    self.scopes.push(new StringMap(true));
+    try {
+      setlocal(TEMPLATE_LISTS_NAME, list);
+      let count = 0;
+      while (list.length) {
+        setlocal(TEMPLATE_ITERCOUNT_NAME, ++count);
+        await routine.call(this, list.shift());
+        await yieldIfNeeded();
+      }
+    } finally {
+      self.scopes.pop();
+    }
+  });
+
+  def("?rest", () => {
+    return getvar(TEMPLATE_LISTS_NAME).slice(getvar(TEMPLATE_ITERCOUNT_NAME));
+  });
+
+  def("map", async (template, ...lists) => {
+    const result = [];
+    await map(template, lists, thing => { result.push(thing); });
+    return result;
+  }, {minimum: 2, default: 2, maximum: -1});
+
+  def("map.se", async (template, ...lists) => {
+    let result = [];
+    await map(template, lists, thing => {
+      if (Type(thing) === 'list') {
+        result = result.concat(thing);
+      } else {
+        result.push(thing);
+      }
+    });
+    return result;
+  }, {minimum: 2, default: 2, maximum: -1});
+
+  async function map(template, lists, handle) {
+    const routine = processTemplate(template, {returnResult: true});
+    lists = lists.map(lexpr);
+    if (!lists.length)
+      throw err("{_PROC_}: Expected list", ERRORS.BAD_INPUT);
+
+    self.scopes.push(new StringMap(true));
+    try {
+      setlocal(TEMPLATE_LISTS_NAME, lists[0]);
+      let count = 0;
+      const mapped = [];
+      while (lists[0].length) {
+        const args = lists.map(l => {
+          if (!l.length)
+            throw err("{_PROC_}: Expected lists of equal length", ERRORS.BAD_INPUT);
+          return l.shift();
+        });
+        setlocal(TEMPLATE_ITERCOUNT_NAME, ++count);
+        handle(await routine.apply(this, args));
+        await yieldIfNeeded();
+      }
+      return mapped;
+    } finally {
+      self.scopes.pop();
+    }
+  }
+
+  def("filter", async (template, list) => {
+    const routine = processTemplate(template, {returnResult: true});
+    list = lexpr(list);
+
+    self.scopes.push(new StringMap(true));
+    try {
+      setlocal(TEMPLATE_LISTS_NAME, list);
+      let count = 0;
+      const filtered = [];
+      while (list.length) {
+        const item = list.shift();
+        setlocal(TEMPLATE_ITERCOUNT_NAME, ++count);
+        const value = await routine.call(this, item);
+        if (value)
+          filtered.push(item);
+        await yieldIfNeeded();
+      }
+      return filtered;
+    } finally {
+      self.scopes.pop();
+    }
+  });
+
+  def("find", async (template, list) => {
+    const routine = processTemplate(template, {returnResult: true});
+    list = lexpr(list);
+
+    self.scopes.push(new StringMap(true));
+    try {
+      setlocal(TEMPLATE_LISTS_NAME, list);
+      let count = 0;
+      while (list.length) {
+        const item = list.shift();
+        setlocal(TEMPLATE_ITERCOUNT_NAME, ++count);
+        const value = await routine.call(this, item);
+        if (value)
+          return item;
+        await yieldIfNeeded();
+      }
+      return [];
+    } finally {
+      self.scopes.pop();
+    }
+  });
+
+  def("reduce", async (template, list, initial=undefined) => {
+    const routine = processTemplate(template, {returnResult: true});
+    list = lexpr(list);
+    let value = initial !== undefined ? initial : list.pop();
+
+    while (list.length) {
+      value = await routine.call(this, list.pop(), value);
+      await yieldIfNeeded();
+    }
+    return value;
+  }, {maximum: 3});
+
+
+  def("crossmap", async (template, ...lists) => {
+    const routine = processTemplate(template, {returnResult: true});
+
+    lists = lists.map(lexpr);
+    if (!lists.length)
+      throw err("{_PROC_}: Expected list", ERRORS.BAD_INPUT);
+
+    // Special case: if only one element is present, use as list of lists.
+    if (lists.length === 1)
+      lists = lists[0].map(lexpr);
+
+    const indexes = lists.map(() => 0);
+    let done = false;
+
+    const mapped = [];
+    while (!done) {
+      const args = indexes.map((v, i) => lists[i][v]);
+      let pos = indexes.length - 1;
+      ++indexes[pos];
+      while (indexes[pos] === lists[pos].length) {
+        if (pos === 0) {
+          done = true;
+          break;
+        }
+        indexes[pos] = 0;
+        pos--;
+        ++indexes[pos];
+      }
+      const value = await routine.apply(this, args);
+      mapped.push(value);
+      await yieldIfNeeded();
+    }
+    return mapped;
+  }, {minimum: 2, default: 2, maximum: -1});
+
+  // Not Supported: cascade
+  // Not Supported: cascade.2
+  // Not Supported: transfer
+
+  // Helper for testing that wraps a result in a Promise
+  def(".promise", async value => value);
+
+  def(".verify_bound_ignore", value => {
+    if (this === undefined)
+      throw new Error("Internal error: Unbound procedure");
+  });
+  def(".verify_bound_identity", value => {
+    if (this === undefined)
+      throw new Error("Internal error: Unbound procedure");
+    return value;
+  });
+}
+
+</script><script>
+window.LOGO_EXAMPLES = {
+  "cube": {
+    "title": "Spinning cube · 3D",
+    "code": "; Real 3D rotation and perspective, drawn with ordinary 2D turtle commands.\n; SIN and COS use degrees. WAIT 2 is two sixtieths of a second.\n\nTO PROJECT :X :Y :Z\n  (LOCAL \"RX \"RY \"RZ \"DEPTH \"SCALE)\n  MAKE \"RX (:X * COS :A) + (:Z * SIN :A)\n  MAKE \"RZ (:Z * COS :A) - (:X * SIN :A)\n  MAKE \"RY (:Y * COS :B) - (:RZ * SIN :B)\n  MAKE \"DEPTH (:Y * SIN :B) + (:RZ * COS :B)\n  MAKE \"SCALE 400 / (400 + :DEPTH)\n  SETXY (:RX * :SCALE) (:RY * :SCALE)\nEND\n\nTO EDGE :I :J\n  (LOCAL \"P \"Q)\n  MAKE \"P ITEM :I :VERTICES\n  MAKE \"Q ITEM :J :VERTICES\n  PENUP\n  PROJECT (ITEM 1 :P) (ITEM 2 :P) (ITEM 3 :P)\n  PENDOWN\n  PROJECT (ITEM 1 :Q) (ITEM 2 :Q) (ITEM 3 :Q)\nEND\n\nTO SPINCUBE\n  (LOCAL \"A \"B \"VERTICES \"EDGES \"PAIR)\n  MAKE \"VERTICES [\n    [-90 -90 -90] [90 -90 -90] [90 90 -90] [-90 90 -90]\n    [-90 -90 90] [90 -90 90] [90 90 90] [-90 90 90]\n  ]\n  MAKE \"EDGES [\n    [1 2] [2 3] [3 4] [4 1]\n    [5 6] [6 7] [7 8] [8 5]\n    [1 5] [2 6] [3 7] [4 8]\n  ]\n  MAKE \"A 0\n  MAKE \"B 20\n  CLEARSCREEN\n  HIDETURTLE\n  SETPENCOLOR \"cyan\n  SETPENSIZE 2\n  FOREVER [\n    CLEAN\n    REPEAT 12 [\n      MAKE \"PAIR ITEM REPCOUNT :EDGES\n      EDGE (ITEM 1 :PAIR) (ITEM 2 :PAIR)\n    ]\n    WAIT 2\n    MAKE \"A :A + 2\n    MAKE \"B :B + 1\n  ]\nEND\n\nSPINCUBE\n"
+  },
+  "square": {
+    "title": "Your first square",
+    "code": "; A routine can be reused with different inputs.\nCS ST\nSETPC \"cyan\nSETPENSIZE 2\n\nTO SQUARE :SIDE\n  REPEAT 4 [FD :SIDE RT 90]\nEND\n\nSQUARE 140\n"
+  },
+  "flower": {
+    "title": "Squares in a circle",
+    "code": "CS HT\nSETPENSIZE 2\n\nTO SQUARE :SIDE\n  REPEAT 4 [FD :SIDE RT 90]\nEND\n\n; Turn a little between each square.\nREPEAT 36 [\n  SETPC 1 + REMAINDER REPCOUNT 7\n  SQUARE 130\n  RT 10\n  WAIT 2\n]\n"
+  },
+  "spiral": {
+    "title": "Rainbow spiral",
+    "code": "CS HT\nSETPENSIZE 2\n\n; REPCOUNT increases each trip round the loop.\nREPEAT 140 [\n  SETPC 1 + REMAINDER REPCOUNT 7\n  FD REPCOUNT * 1.8\n  RT 91\n  WAIT 1\n]\n"
+  },
+  "tree": {
+    "title": "Recursive tree",
+    "code": "CS HT\nSETPC \"lime\nSETPENSIZE 2\n\nTO TREE :SIZE\n  IF :SIZE < 6 [STOP]\n  FD :SIZE\n  LT 28\n  TREE :SIZE * 0.7\n  RT 56\n  TREE :SIZE * 0.7\n  LT 28\n  BK :SIZE\nEND\n\nPU SETXY 0 -220 PD\nTREE 135\n"
+  }
+};
+
+</script><script>
+/* Turtle Room UI. Logo interpreter and canvas engine by Joshua Bell (Apache-2.0). */
+'use strict';
+const $ = id => document.getElementById(id);
+const editor = $('editor'), output = $('console');
+const buffer = document.createElement('canvas'); buffer.width = 800; buffer.height = 600;
+const turtle = new CanvasTurtle(buffer.getContext('2d'), $('turtle').getContext('2d'), 800, 600);
+const screenContext = $('drawing').getContext('2d');
+let logo, running = false, paused = false, stopped = false, active = Promise.resolve(), lastPresented = 0;
+let history = [], historyIndex = 0, reading = null, dirty = false, lastSaved = '', currentName = 'spinning-cube';
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+function log(text) { output.textContent = (output.textContent + text).slice(-18000); output.scrollTop = output.scrollHeight; }
+function present() { screenContext.drawImage(buffer, 0, 0); lastPresented=performance.now(); }
+function resetTurtle() { turtle.pendown=false; turtle.home(); turtle.visible=true; turtle.pendown=true; turtle.penmode='paint'; turtle.penwidth=2; turtle.color='#62ebc8'; turtle.bgcolor='#050b13'; turtle.turtlemode='wrap'; turtle.clear(); present(); }
+function status(text, state='') { $('runStatus').textContent=text; $('runStatus').dataset.state=state; }
+function controls() { $('runBtn').disabled=running; $('pauseBtn').disabled=!running; $('stopBtn').disabled=!running; $('command').disabled=running; $('sendBtn').disabled=running; $('pauseBtn').textContent=paused?'Resume':'Pause'; }
+async function pauseGate() { while(paused && !stopped) await delay(20); }
+function newInterpreter() {
+  logo = new LogoInterpreter(turtle, {
+    write(...parts) { log(parts.join('')); }, clear() { output.textContent=''; }, readback() { return output.textContent; },
+    read(prompt) { return new Promise(resolve => { reading=resolve; $('readPrompt').textContent=prompt||'Logo is waiting for input'; $('readInput').value=''; $('readDialog').showModal(); $('readInput').focus(); }); },
+    get color(){return output.style.color}, set color(v){output.style.color=v},
+    get textsize(){return parseFloat(output.style.fontSize)||13}, set textsize(v){output.style.fontSize=Math.max(10,Math.min(v,80))+'px'},
+    get font(){return output.style.fontFamily}, set font(v){output.style.fontFamily=v}
+  });
+  const execute=logo.execute;
+  logo.execute=async function(statements, options) { await pauseGate(); return execute(statements,options); };
+  const wait = async function(ticks) {
+    ticks=Number(ticks); if(!Number.isFinite(ticks)||ticks<0) throw new Error('WAIT needs a non-negative number of sixtieths of a second.');
+    present(); let remaining=ticks*1000/60;
+    do { await pauseGate(); if(stopped) return; const start=performance.now(); await delay(Math.min(remaining,20)); if(!paused) remaining-=performance.now()-start; } while(remaining>0);
+  };
+  wait.primitive=true; wait.minimum=wait.default=wait.maximum=1; logo.routines.set('wait',wait);
+  logo.routines.set('doforever',logo.routines.get('forever'));
+  const draw=()=>{resetTurtle();}; draw.primitive=true; draw.minimum=draw.default=draw.maximum=0; logo.routines.set('draw',draw);
+  return logo;
+}
+function lines() { const n=editor.value.split('\n').length; $('lineNumbers').textContent=Array.from({length:n},(_,i)=>i+1).join('\n'); $('lineCount').textContent=n+' lines'; $('lineNumbers').scrollTop=editor.scrollTop; }
+function saveDraft() { try { localStorage.setItem('turtle-room-draft-v1',JSON.stringify({code:editor.value,name:currentName})); $('saveStatus').textContent='Draft saved on this device'; } catch { $('saveStatus').textContent='Use Save .logo to keep your code'; } }
+function setCode(code,name) { editor.value=code; currentName=name||'my-program'; dirty=false; lastSaved=code; lines(); saveDraft(); }
+async function stop() {
+  if(!running)return;
+  stopped=true; paused=false; logo.bye();
+  if(reading){const r=reading;reading=null;$('readDialog').close();r('');}
+  controls(); await active; present();
+}
+async function run(code=editor.value, fresh=true) {
+  if(running||!code.trim())return;
+  stopped=false; paused=false; running=true; controls(); status('Running');
+  if(fresh){resetTurtle();newInterpreter();saveDraft();log('\n> Run '+currentName+'\n');}
+  active=(async()=>{try{await logo.run(code);status(stopped?'Stopped':'Ready');}catch(e){log('! '+(e.message||String(e))+(e.proc?' (in '+e.proc+')':'')+'\n');status('Check the command prompt','error');}finally{logo.forceBye=false;running=false;paused=false;present();controls();}})();
+  await active;
+}
+async function replaceCode(code,name) { if(dirty&&!confirm('Replace the editor contents? Save .logo first if you want to keep this version.'))return false; await stop(); setCode(code,name); status('Ready'); return true; }
+function download(name,contents,type='text/plain') { const url=URL.createObjectURL(new Blob([contents],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000); }
+function safeName(name) { return name.replace(/[^a-z0-9_-]/gi,'-').slice(0,70)||'my-program'; }
+$('runBtn').onclick=()=>run();
+$('pauseBtn').onclick=()=>{paused=!paused;status(paused?'Paused':'Running',paused?'paused':'');controls();present();};
+$('stopBtn').onclick=stop;
+$('clearBtn').onclick=async()=>{await stop();resetTurtle();status('Screen cleared');};
+$('clearTextBtn').onclick=()=>{output.textContent='';};
+$('newBtn').onclick=()=>replaceCode('; Your next idea starts here.\nCS\nST\n\n','my-program');
+$('loadExample').onclick=async()=>{const example=LOGO_EXAMPLES[$('examples').value];if(example)await replaceCode(example.code,$('examples').value==='cube'?'spinning-cube':$('examples').value);};
+$('saveBtn').onclick=()=>{download(safeName(currentName)+'.logo',editor.value);lastSaved=editor.value;dirty=false;status('Logo file saved');};
+$('openBtn').onclick=()=>$('fileInput').click();
+$('fileInput').onchange=async e=>{const file=e.target.files[0];if(!file)return;if(file.size>1024*1024){log('! Please open a Logo file smaller than 1 MB.\n');return;}await replaceCode(await file.text(),file.name.replace(/\.(logo|lgo|txt)$/i,''));e.target.value='';};
+$('pngBtn').onclick=()=>{present();$('drawing').toBlob(blob=>{if(blob)download(safeName(currentName)+'.png',blob,'image/png');});};
+$('offlineBtn').onclick=()=>{if(window.TURTLE_OFFLINE){const a=document.createElement('a');a.href=window.TURTLE_OFFLINE;a.download='Turtle-Room.html';a.click();}else if(location.protocol==='file:'){status('Already using the offline app');}else{const a=document.createElement('a');a.href='index.html';a.download='Turtle-Room.html';a.click();}};
+$('commandForm').onsubmit=async e=>{e.preventDefault();const code=$('command').value.trim();if(!code||running)return;history.push(code);historyIndex=history.length;log('? '+code+'\n');$('command').value='';await run(code,false);$('command').focus();};
+$('command').onkeydown=e=>{if(e.key==='ArrowUp'||e.key==='ArrowDown'){e.preventDefault();historyIndex=Math.max(0,Math.min(history.length,historyIndex+(e.key==='ArrowUp'?-1:1)));$('command').value=history[historyIndex]||'';}};
+let saveTimer;editor.addEventListener('input',()=>{dirty=editor.value!==lastSaved;lines();clearTimeout(saveTimer);saveTimer=setTimeout(saveDraft,300);});editor.addEventListener('scroll',()=>{$('lineNumbers').scrollTop=editor.scrollTop;});
+editor.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();editor.setRangeText('  ',editor.selectionStart,editor.selectionEnd,'end');editor.dispatchEvent(new Event('input'));}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();run();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();$('saveBtn').click();}if(e.key==='Escape'&&running)stop();});
+$('helpBtn').onclick=()=>$('guide').showModal();$('closeGuide').onclick=()=>$('guide').close();
+$('readForm').onsubmit=e=>{e.preventDefault();const r=reading;reading=null;$('readDialog').close();r?.($('readInput').value);};
+$('cancelRead').onclick=stop;$('readDialog').addEventListener('cancel',e=>{e.preventDefault();stop();});
+resetTurtle();newInterpreter();
+let stored;try{stored=JSON.parse(localStorage.getItem('turtle-room-draft-v1'));}catch{}
+if(stored&&typeof stored.code==='string'){setCode(stored.code,stored.name||'my-program');status('Draft restored');}else{setCode(LOGO_EXAMPLES.cube.code,'spinning-cube');setTimeout(()=>run(),100);}
+setInterval(()=>{if(running&&!paused&&performance.now()-lastPresented>120)present();$('position').textContent='X '+Math.round(turtle.x)+' · Y '+Math.round(turtle.y)+' · '+Math.round(((90-turtle.r*180/Math.PI)%360+360)%360)+'°';},120);
+// Optional browser agent interface; the visible controls use these same actions.
+if(document.modelContext?.registerTool){
+ const lifecycle=new AbortController();
+ const register=(tool)=>{try{Promise.resolve(document.modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{});}catch{}};
+ register({name:'read_logo_workspace',description:'Read the current Logo source, execution state and recent text output.',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:true},execute(){return{source:editor.value,running,paused,output:output.textContent};}});
+ register({name:'set_logo_source',description:'Replace the Logo editor source after stopping execution. Does not run the program.',inputSchema:{type:'object',properties:{source:{type:'string',maxLength:100000}},required:['source'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},async execute(input){if(!input||typeof input.source!=='string'||input.source.length>100000)throw Error('source must be a string up to 100000 characters');await stop();setCode(input.source,'my-program');return{updated:true,characters:editor.value.length};}});
+ window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true});
+}
+
+$('guideContent').innerHTML="<h3>Your first commands</h3><p>The turtle starts in the centre, facing up. Type into the command prompt and press Enter. Distances are screen units; turns are in degrees.</p><pre>REPEAT 4 [FD 100 RT 90]</pre><p>To write a longer program, use the editor and select <strong>Run program</strong> (Ctrl+Enter). Each full run starts with a fresh turtle and variables. Prompt commands keep the current drawing and routines. Pause freezes execution; Resume continues it. Stop or Esc ends the running program.</p><h3>Teach the turtle a new word</h3><pre>TO SQUARE :SIDE\n  REPEAT 4 [FD :SIDE RT 90]\nEND\n\nSQUARE 120\nSQUARE 60</pre><p><code>TO … END</code> defines a routine. <code>:SIDE</code> is its input. Commands can be upper or lower case. A semicolon begins a comment that lasts to the end of the line.</p><h3>A desk-side command card</h3><table><tr><td><code>FD 100 / BK 100</code></td><td>Forward / back</td></tr><tr><td><code>RT 90 / LT 90</code></td><td>Right / left</td></tr><tr><td><code>PU / PD</code></td><td>Pen up / down</td></tr><tr><td><code>CS / CLEAN / HOME</code></td><td>Clear and home / clear only / move home</td></tr><tr><td><code>HT / ST</code></td><td>Hide / show turtle</td></tr><tr><td><code>SETXY 50 -80</code></td><td>Move to X, Y; draws if pen is down</td></tr><tr><td><code>SETH 90</code></td><td>Face east; 0 is up</td></tr><tr><td><code>SETPC 6</code></td><td>Cyan pen; colour names also work: <code>SETPC &quot;red</code></td></tr><tr><td><code>SETPENSIZE 3</code></td><td>Pen width</td></tr><tr><td><code>SETBG &quot;black</code></td><td>Background colour</td></tr><tr><td><code>REPEAT 10 [FD 20 RT 36]</code></td><td>A counted loop; <code>REPCOUNT</code> is the iteration number</td></tr><tr><td><code>FOREVER [FD 1 RT 1 WAIT 1]</code></td><td>Loop until Stop; <code>DOFOREVER</code> is an alias</td></tr><tr><td><code>MAKE &quot;SIZE 100</code></td><td>Store a value; read it with <code>:SIZE</code></td></tr><tr><td><code>IF :SIZE &lt; 5 [STOP]</code></td><td>Conditional; STOP returns from the current routine</td></tr><tr><td><code>IFELSE :X &gt; 0 [RT 90] [LT 90]</code></td><td>Choose between two blocks</td></tr><tr><td><code>PRINT [Hello again]</code></td><td>Write to the text output</td></tr><tr><td><code>SHOW POS</code></td><td>Show the turtle's position as a list</td></tr><tr><td><code>WAIT 60</code></td><td>Wait one second (60 ticks)</td></tr><tr><td><code>WRAP / WINDOW / FENCE</code></td><td>Wrap at edges / draw offscreen / stop at edges</td></tr></table><h3>Variables, lists and arithmetic</h3><pre>MAKE &quot;N 6\nPRINT :N * 7\nMAKE &quot;POINT [10 20 30]\nPRINT ITEM 2 :POINT\n\nTO DOUBLE :N\n  OUTPUT :N * 2\nEND\nPRINT DOUBLE 21</pre><p>Use <code>(LOCAL &quot;A &quot;B)</code> for variables local to a routine, or <code>LOCALMAKE &quot;A 10</code>. Lists use square brackets. <code>FIRST</code>, <code>LAST</code>, <code>BUTFIRST</code>, <code>COUNT</code>, <code>LIST</code>, <code>SENTENCE</code> and <code>ITEM</code> work with words or lists as appropriate. <code>ITEM</code> counts from 1. Expressions support +, −, *, /, comparisons, <code>RANDOM</code>, <code>SQRT</code>, <code>SIN</code> and <code>COS</code>. Trigonometry uses degrees. Use parentheses to make grouping clear.</p><h3>How the spinning cube works</h3><p>The first example is an actual Logo program. <code>SPINCUBE</code> defines eight 3D vertices and twelve edges. <code>EDGE</code> lifts the pen, projects one endpoint, then draws to the other. <code>PROJECT</code> rotates each point using SIN and COS, and divides by depth to make distant points appear smaller. Only ordinary 2D turtle commands draw the result.</p><p>The outer <code>FOREVER</code> redraws the cube, while <code>REPEAT 12</code> draws its edges. <code>WAIT 2</code> presents each completed frame. Change <code>MAKE &quot;A :A + 2</code> to <code>+ 4</code> for faster rotation, or use <code>WAIT 4</code> for slower playback. Change <code>SETPENCOLOR &quot;cyan</code> to <code>&quot;yellow</code>. Stop, edit, then Run.</p><h3>Keep what you make</h3><p>The editor is saved automatically on this device when browser storage is available. <strong>Save .logo</strong> creates a portable text file of the editor; <strong>Open .logo</strong> loads one. Routines typed only at the prompt live in the current session, so put anything you want to save in the editor. <strong>Save image</strong> exports the drawing as PNG. <strong>Keep offline</strong> downloads the complete app as a single HTML file. Double-click that file in Edge or Chrome; it needs no installation or internet connection.</p><h3>A familiar flavour of Logo</h3><p>This is a modern browser Logo, inspired by the BBC computer room. It is not an exact Acornsoft emulator. It uses Joshua Bell's jslogo interpreter, a broad subset of UCBLogo, with the BBC colour order: 0 black, 1 red, 2 green, 3 yellow, 4 blue, 5 magenta, 6 cyan, 7 white. <code>DRAW</code> resets the screen and turtle. Classic movement, loops, routines, lists and recursion are supported; BBC sound, hardware and disk commands are not emulated.</p><p>Interpreter and turtle engine © Joshua Bell and contributors, Apache License 2.0. <a href=\"https://github.com/inexorabletash/jslogo\" target=\"_blank\" rel=\"noopener\">Original interpreter</a> · <a href=\"https://inexorabletash.github.io/jslogo/language.html\" target=\"_blank\" rel=\"noopener\">Full language reference</a>. The offline file includes the licence and modification notes.</p>";
+
+</script>
+<script type="text/plain" id="third-party-notices">Turtle Room
+Interpreter and turtle engine: Joshua Bell and contributors.
+Based on https://github.com/inexorabletash/jslogo
+Turtle Room changes (30 September 2026): BBC palette; empty-loop cancellation; classroom UI; interruptible WAIT; pause; drawing buffer; examples; offline packaging.
+
+Logo in Javascript
+
+Source Code Copyright (C) 2009-2013 Joshua Bell
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+</script>
+</body></html>
